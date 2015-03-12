@@ -7,6 +7,7 @@
 
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 <script src="//d3f5pyioow99x0.cloudfront.net/0.8/hull.js"></script>
+<script src="js/components.js"></script>
 
 <script type='text/javascript'>
   window.fbAsyncInit = function() {
@@ -31,6 +32,13 @@ Hull.init({
 });
 </script>
 
+<script type='text/handlebars' data-hull-template='createentityform/createentityform'>
+    <h1>Create new Entity</h1>
+    <input type="text" placeholder="Entity Title" id="newEntityField"></input>
+    <button type="button" id="createEntity" data-hull-action="createentity">Create</button>
+</script>
+    
+<div data-hull-component="createentityform"></div>
 <div data-hull-component="login/profile@hull" data-hull-provider="facebook"></div>
 
 <div
