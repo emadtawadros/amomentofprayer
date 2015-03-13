@@ -5,7 +5,7 @@ Hull.component('createentityform', {
         var component = this;
         var newEntityName = this.$el.find('#newEntityField').val();
         this.$el.find('#fadeout').fadeOut(300);
-        this.$el.find('#fadein').delay(400).fadeIn(300);
+        this.$el.find('#fadein').delay(300).fadeIn(300);
         if(newEntityName)
         {
           component.api('/app/entities', 'post',{
