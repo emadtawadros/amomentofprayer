@@ -4,6 +4,7 @@ Hull.component('createentityform', {
     createentity: function(){
         var component = this;
         var newEntityName = this.$el.find('#newEntityField').val();
+        var newEntityID = this.sandbox.util.entity.encode("http://amomentofprayer.azurewebsites.net/quotes");
         this.$el.find('#fadeout').fadeOut(300, function(){
                   component.$el.find('#fadein').fadeIn(300);
         });
@@ -11,7 +12,7 @@ Hull.component('createentityform', {
         if(newEntityName)
         {
           component.api('/app/entities', 'post',{
-            "uid": null,
+            "uid": newEntityID,
             "name": newEntityName
           }).then(function(response) {
             console.log(response);
