@@ -47,8 +47,16 @@ Hull.init({
     <div id="fadeout">Fade Out</div>
     <div id="fadein" style="display:none;">Fade In</div>
 </script>
-    
+ 
+ <script type='text/handlebars' data-hull-template='createquoteform/createquoteform'>
+    <h1>Add a new quote</h1>
+    <input type="text" placeholder="Quote text" id="newQuoteField"></input>
+    <input type="text" placeholder="Quote author" id="newQuoteAuthor"></input>
+    <button type="button" id="createQuote" data-hull-action="createquote">Create</button>
+</script>
+
 <div data-hull-component="createentityform"></div>
+<div data-hull-component="createquoteform"></div>
 <div data-hull-component="login/profile@hull" data-hull-provider="facebook"></div>
 
 <div
