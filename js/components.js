@@ -4,7 +4,7 @@ Hull.component('createentityform', {
     createentity: function(){
         var component = this;
         var newEntityName = this.$el.find('#newEntityField').val();
-        var newEntityID = this.sandbox.util.entity.encode("http://amomentofprayer.azurewebsites.net/quotes");
+        var newEntityID = this.sandbox.util.entity.encode("http://amomentofprayer.azurewebsites.net/prayers");
         this.$el.find('#fadeout').fadeOut(300, function(){
                   component.$el.find('#fadein').fadeIn(300);
         });
