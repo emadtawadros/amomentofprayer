@@ -34,6 +34,12 @@ Hull.init({
 }, function(hull, me, app, org){
      console.log('Here we go!');
      Hull.api('/app/entities', 'get').then(function(response) {
+         console.log("Entities");
+         console.log(response);
+     });
+     
+     Hull.api('5504676b91e0cb0be00014cd/conversations', 'get').then(function(response) {
+         console.log("Quotes");
          console.log(response);
      });
 });
