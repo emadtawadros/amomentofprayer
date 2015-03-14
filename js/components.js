@@ -21,3 +21,25 @@ Hull.component('createentityform', {
     }
   }
 });
+
+Hull.component('createquoteform', {
+  templates: ['createquoteform'],
+  actions: {
+    createquote: function(){
+        var component = this;
+        var newQuoteText = this.$el.find('#newQuoteField').val();
+        var newQuoteAuthor = this.$el.find('#newQuoteAuthor').val();
+
+        if(newQuoteText && newQuoteAuthor)
+        {
+          component.api('/5504676b91e0cb0be00014cd/conversations', 'post',{
+            "public": "true",
+            "name": newQuoteText,
+            "description": newQuoteAuthor,
+          }).then(function(response) {
+            console.log(response);
+          });
+        }
+    }
+  }
+});
