@@ -56,5 +56,8 @@ Hull.component('quotes', {
   initialize: function(){
     this.options.currentQuoteIndex = 0;
     this.options.NextQuoteIndex = 1;
+  },
+  beforeRender: function(data, errors) {
+    this.options.currentQuote = data.quotes[this.options.currentQuoteIndex];
   }
 });
