@@ -65,6 +65,9 @@ Hull.init({
 
 <script type='text/handlebars' data-hull-template='quotes/quotes'>
 <p>{{options.currentQuoteIndex}}</p>
+{{#with quotes.[0]}}
+    {{description}}
+    {{/with}}
 <p>{{quotes.[@options.currentQuoteIndex].name}}</p>
 </script>
 
