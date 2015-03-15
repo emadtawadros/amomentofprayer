@@ -49,7 +49,8 @@ Hull.component('quotes', {
   datasources: {
     quotes: function() {
       return this.api('5504676b91e0cb0be00014cd/conversations', 'get', {
-        order_by: 'created_at DESC'
+        order_by: 'created_at DESC',
+        "per_page":1
       });
     }
   },
