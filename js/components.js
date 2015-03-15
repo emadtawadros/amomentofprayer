@@ -61,6 +61,8 @@ Hull.component('quotes', {
     this.options.currentQuote = data.quotes[this.options.currentQuoteIndex];
   },
   afterRender: function(data) {
-    this.$el.find('[data-isActive="true"]').text(this.options.currentQuote.name);
+    var currentQuote = this.$el.find('[data-isActive="true"]');
+    currentQuote.find('#quoteText').text(this.options.currentQuote.name);
+    currentQuote.find('#quoteAuthor').text(this.options.currentQuote.description);
   }
 });
