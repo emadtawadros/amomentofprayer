@@ -65,7 +65,7 @@ Hull.component('quotes', {
     currentQuote.find('#quoteText').text(this.options.currentQuote.name);
     currentQuote.find('#quoteAuthor').text(this.options.currentQuote.description);
     
-    setInterval(rotateQuotes, 3000);
+    setInterval(this.rotateQuotes, 3000);
   },
   rotateQuotes: function ()
   {
