@@ -51,11 +51,11 @@ Hull.component('quotes', {
   },
   initialize: function(){
     this.options.currentQuoteIndex = 0;
-    this.options.NextQuoteIndex = 1;
+    this.options.nextQuoteIndex = 1;
   },
   beforeRender: function(data, errors) {
     this.options.currentQuote = data.quotes[this.options.currentQuoteIndex];
-    this.options.nextQuote = data.quotes[this.options.NextQuoteIndex];
+    this.options.nextQuote = data.quotes[this.options.nextQuoteIndex];
   },
   afterRender: function(data) {
     var currentQuote = this.$el.find('[data-isActive="true"]');
@@ -77,10 +77,10 @@ Hull.component('quotes', {
     currentActiveDiv.fadeOut(500 , function() {
       currentActiveDiv.attr("data-isActive", "false");
       //Setting the next quote
-      component.options.currentQuoteIndex++;
-      component.options.currentQuote = component.datasources.quotes[component.options.CurrentQuoteIndex];
-      currentActiveDiv.find('#quoteText').text(component.options.currentQuote.name);
-      currentActiveDiv.find('#quoteAuthor').text(component.options.currentQuote.description);
+      component.options.nextQuoteIndex++;
+      component.options.nextQuote = component.datasources.quotes[component.options.nextQuoteIndex];
+      currentActiveDiv.find('#quoteText').text(component.options.nextQuote.name);
+      currentActiveDiv.find('#quoteAuthor').text(component.options.nextQuote.description);
       
       currentInactiveDiv.fadeIn(500, function() {
         currentInactiveDiv.attr("data-isActive", "true");
