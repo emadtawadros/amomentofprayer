@@ -82,7 +82,9 @@ Hull.component('quotes', {
       currentActiveDiv.attr("data-isActive", "false");
       currentInactiveDiv.fadeIn(500, function() {
         currentInactiveDiv.attr("data-isActive", "true");
-        setTimeout(component.rotateQuotes(component), 5000);
+        setTimeout(function(){
+          component.rotateQuotes(component)
+        }, 5000);
       });
     });
   }
