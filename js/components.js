@@ -59,16 +59,20 @@ Hull.component('quotes', {
   },
   beforeRender: function(data, errors) {
     this.options.currentQuote = data.quotes[this.options.currentQuoteIndex];
+    this.options.nextQuote = data.quotes[this.options.NextQuoteIndex];
   },
   afterRender: function(data) {
     var currentQuote = this.$el.find('[data-isActive="true"]');
     currentQuote.find('#quoteText').text(this.options.currentQuote.name);
     currentQuote.find('#quoteAuthor').text(this.options.currentQuote.description);
     
+    var nextQuote = this.$el.find('[data-isActive="false"]');
+    nextQuote.find('#quoteText').text(this.options.nextQuote.name);
+    nextQuote.find('#quoteAuthor').text(this.options.nextQuote.description);
+    
     setInterval(this.rotateQuotes, 3000);
   },
   rotateQuotes: function ()
   {
-    alert("Rotate Quote");
   }
 });
