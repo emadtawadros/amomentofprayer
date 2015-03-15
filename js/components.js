@@ -59,5 +59,6 @@ Hull.component('quotes', {
   },
   beforeRender: function(data, errors) {
     this.options.currentQuote = data.quotes[this.options.currentQuoteIndex];
+    this.$el.find('[data-isActive="true"]').text(this.options.currentQuoteIndex);
   }
 });
