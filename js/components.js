@@ -75,8 +75,14 @@ Hull.component('quotes', {
   actions: {
   },
   rotateQuotes: function (component) {
-    component.$el.find('[data-isActive="true"]').fadeOut(500, function(){
-      component.$el.find('[data-isActive="false"]').fadeIn(500);
+    var currentActiveDiv = component.$el.find('[data-isActive="true"]');
+    var currentInactiveDiv = component.$el.find('[data-isActive="false"]');
+    
+    currentActiveDiv.fadeOut(500, function(){
+      currentActiveDiv.attr("data-isActive", "false");
+      currentInactiveDiv.fadeIn(500, function() {
+        currentInactiveDiv.attr("data-isActive", "true");
+      });
     });
   }
 });
