@@ -82,15 +82,12 @@ Hull.component('quotes', {
       component.options.nextQuoteIndex++;
       if(component.options.nextQuoteIndex >= component.options.fetchedQuotesLength) // we reached the end of the fetched quotes
       {
-        
+        component.options.nextQuoteIndex = 0;
       }
-      else
-      {
-        component.options.nextQuote = component.options.data.quotes[component.options.nextQuoteIndex];
-        currentActiveDiv.find('#quoteText').text(component.options.nextQuote.name);
-        currentActiveDiv.find('#quoteAuthor').text(component.options.nextQuote.description);
-      }
-      
+      component.options.nextQuote = component.options.data.quotes[component.options.nextQuoteIndex];
+      currentActiveDiv.find('#quoteText').text(component.options.nextQuote.name);
+      currentActiveDiv.find('#quoteAuthor').text(component.options.nextQuote.description);
+
       currentInactiveDiv.fadeIn(500, function() {
         currentInactiveDiv.attr("data-isActive", "true");
         setTimeout(function(){
