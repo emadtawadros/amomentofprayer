@@ -79,7 +79,7 @@ Hull.component('quotes', {
     var currentActiveDiv = component.$el.find('[data-isActive="true"]');
     var currentInactiveDiv = component.$el.find('[data-isActive="false"]');
     
-    currentActiveDiv.fadeOut(500).delay(5000).fadeInFunction(currentActiveDiv, currentInactiveDiv, component);
+    currentActiveDiv.fadeOut(500).fadeInFunction(currentActiveDiv, currentInactiveDiv, component);
   },
   fadeIn: function(currentActiveDiv, currentInactiveDiv, component) {
     currentActiveDiv.attr("data-isActive", "false");
