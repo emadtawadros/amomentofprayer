@@ -79,7 +79,7 @@ Hull.component('quotes', {
       currentActiveDiv.attr("data-isActive", "false");
       //Setting the next quote
       component.options.nextQuoteIndex++;
-      component.options.nextQuote = component.options.data[component.options.nextQuoteIndex];
+      component.options.nextQuote = component.options.data.quotes[component.options.nextQuoteIndex];
       currentActiveDiv.find('#quoteText').text(component.options.nextQuote.name);
       currentActiveDiv.find('#quoteAuthor').text(component.options.nextQuote.description);
       
