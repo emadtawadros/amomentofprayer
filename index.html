@@ -64,10 +64,14 @@ Hull.init({
 </script>
 
 <script type='text/handlebars' data-hull-template='quotes/quotes'>
-<div data-isActive="true"> </div>
-<div data-isActive="false"> </div>
-<p>{{options.currentQuote.name}}</p>
-<p>{{options.currentQuote.description}}</p>
+<div data-isActive="true">
+    <div id="quoteText"></div>
+    <div id="quoteAuthor"></div>
+</div>
+<div data-isActive="false">
+    <div id="quoteText"></div>
+    <div id="quoteAuthor"></div>
+</div>
 </script>
 
 <div data-hull-component="createentityform"></div>
