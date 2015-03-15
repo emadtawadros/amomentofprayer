@@ -70,13 +70,13 @@ Hull.component('quotes', {
     nextQuote.find('#quoteText').text(this.options.nextQuote.name);
     nextQuote.find('#quoteAuthor').text(this.options.nextQuote.description);
     
-    setInterval(this.rotateQuotes, 3000);
+    setInterval(this.rotateQuotes(this), 3000);
   },
-  rotateQuotes: function ()
-  {
-    var component = this;
-    this.$el.find('[data-isActive="true"]').fadeOut(300, function(){
-      component.$el.find('[data-isActive="false"]').fadeIn(300);
-    });
+  actions: {
+    rotateQuotes: function (component) {
+      component.$el.find('[data-isActive="true"]').fadeOut(300, function(){
+        component.$el.find('[data-isActive="false"]').fadeIn(300);
+      });
+    }
   }
 });
