@@ -54,6 +54,7 @@ Hull.component('quotes', {
     this.options.nextQuoteIndex = 1;
   },
   beforeRender: function(data, errors) {
+    this.options.data = data;
     this.options.currentQuote = data.quotes[this.options.currentQuoteIndex];
     this.options.nextQuote = data.quotes[this.options.nextQuoteIndex];
   },
@@ -78,7 +79,7 @@ Hull.component('quotes', {
       currentActiveDiv.attr("data-isActive", "false");
       //Setting the next quote
       component.options.nextQuoteIndex++;
-      component.options.nextQuote = component.datasources.quotes[component.options.nextQuoteIndex];
+      component.options.nextQuote = compoenet.options.data[component.options.nextQuoteIndex];
       currentActiveDiv.find('#quoteText').text(component.options.nextQuote.name);
       currentActiveDiv.find('#quoteAuthor').text(component.options.nextQuote.description);
       
