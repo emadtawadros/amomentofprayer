@@ -47,7 +47,12 @@ Hull.component('createquoteform', {
 Hull.component('quotes', {
   templates: ['quotes'],
   datasources: {
-    quotes: '5504676b91e0cb0be00014cd/conversations'
+   quotes: function() {
+     return this.api('5504676b91e0cb0be00014cd/conversations', 'get', {
+      order_by: 'created_at DESC',
+       "per_page":1
+    });
+  }
   },
   initialize: function(){
     this.options.currentQuoteIndex = 0;
