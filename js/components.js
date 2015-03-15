@@ -70,7 +70,7 @@ Hull.component('quotes', {
     nextQuote.find('#quoteText').text(this.options.nextQuote.name);
     nextQuote.find('#quoteAuthor').text(this.options.nextQuote.description);
     
-    setInterval(this.rotateQuotes(this), 3000);
+    this.rotateQuotes(this);
   },
   actions: {
   },
@@ -82,6 +82,7 @@ Hull.component('quotes', {
       currentActiveDiv.attr("data-isActive", "false");
       currentInactiveDiv.fadeIn(500, function() {
         currentInactiveDiv.attr("data-isActive", "true");
+        component.rotateQuotes(component);
       });
     });
   }
