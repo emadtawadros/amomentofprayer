@@ -76,6 +76,12 @@ Hull.component('quotes', {
     
     currentActiveDiv.fadeOut(500 , function() {
       currentActiveDiv.attr("data-isActive", "false");
+      //Setting the next quote
+      component.options.currentQuoteIndex++;
+      component.options.currentQuote = component.datasources.quotes[component.options.CurrentQuoteIndex];
+      currentActiveDiv.find('#quoteText').text(component.options.currentQuote.name);
+      currentActiveDiv.find('#quoteAuthor').text(component.options.currentQuote.description);
+      
       currentInactiveDiv.fadeIn(500, function() {
         currentInactiveDiv.attr("data-isActive", "true");
         setTimeout(function(){
