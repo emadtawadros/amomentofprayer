@@ -55,9 +55,9 @@ Hull.component('quotes', {
   },
   beforeRender: function(data, errors) {
     this.options.data = data;
-    this.options.currentQuote = data.quotes[this.options.currentQuoteIndex];
-    this.options.nextQuote = data.quotes[this.options.nextQuoteIndex];
-    this.options.fetchedQuotesLength = data.quotes.length;
+    this.options.currentQuote = data.quotes.data[this.options.currentQuoteIndex];
+    this.options.nextQuote = data.quotes.data[this.options.nextQuoteIndex];
+    this.options.fetchedQuotesLength = data.quotes.data.length;
   },
   afterRender: function(data) {
     var currentQuote = this.$el.find('[data-isActive="true"]');
@@ -84,7 +84,7 @@ Hull.component('quotes', {
       {
         component.options.nextQuoteIndex = 0;
       }
-      component.options.nextQuote = component.options.data.quotes[component.options.nextQuoteIndex];
+      component.options.nextQuote = component.options.data.quotes.data[component.options.nextQuoteIndex];
       currentActiveDiv.find('#quoteText').text(component.options.nextQuote.name);
       currentActiveDiv.find('#quoteAuthor').text(component.options.nextQuote.description);
 
