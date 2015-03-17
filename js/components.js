@@ -92,7 +92,7 @@ Hull.component('quotes', {
         component.options.nextQuoteIndex = 0;
         if(component.options.page == component.options.data.quotes.pagination.pages) //last page
         {
-          component.options.page = 0;
+          component.options.page = 1;
         } else {
           component.options.page++;
         }
