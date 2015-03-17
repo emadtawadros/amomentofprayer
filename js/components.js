@@ -47,9 +47,16 @@ Hull.component('createquoteform', {
 Hull.component('quotes', {
   templates: ['quotes'],
   datasources: {
-   quotes: '5504676b91e0cb0be00014cd/conversations?wrapped=true&per_page=2'
+   quotes: function() {
+     return this.api('5504676b91e0cb0be00014cd/conversations', 'get', {
+       'wrapped': true,
+       'per_page': 2,
+       'page': this.options.page
+     });
+   }
   },
   initialize: function(){
+    this.options.page = 1;
     this.options.currentQuoteIndex = 0;
     this.options.nextQuoteIndex = 1;
   },
