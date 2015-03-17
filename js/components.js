@@ -88,18 +88,6 @@ Hull.component('quotes', {
     currentActiveDiv.fadeOut(500 , function() {
       currentActiveDiv.attr("data-isActive", "false");
       //Setting the next quote
-      if(component.options.nextQuoteIndex == 0) {
-        if(component.options.page == component.options.data.quotes.pagination.pages) //last page
-        {
-          component.options.page = 1;
-        } else {
-          component.options.page++;
-        }
-        component.render();
-      } else {
-        component.options.nextQuoteIndex++;
-      }
-      
       if(component.options.nextQuoteIndex >= component.options.fetchedQuotesLength) // we reached the end of the fetched quotes
       {
         component.options.nextQuoteIndex = 0;
@@ -111,6 +99,17 @@ Hull.component('quotes', {
 
       currentInactiveDiv.fadeIn(500, function() {
         currentInactiveDiv.attr("data-isActive", "true");
+              if(component.options.nextQuoteIndex == 0) {
+        if(component.options.page == component.options.data.quotes.pagination.pages) //last page
+        {
+          component.options.page = 1;
+        } else {
+          component.options.page++;
+        }
+        component.render();
+      } else {
+        component.options.nextQuoteIndex++;
+      }
         setTimeout(function(){
           console.log("next quote index: " + component.options.nextQuoteIndex);
           component.rotateQuotes(component)
