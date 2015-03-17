@@ -110,6 +110,7 @@ Hull.component('quotes', {
       currentInactiveDiv.fadeIn(500, function() {
         currentInactiveDiv.attr("data-isActive", "true");
         setTimeout(function(){
+          console.log("next quote index: " + component.options.nextQuoteIndex);
           component.rotateQuotes(component)
         }, 5000);
       });
