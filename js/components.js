@@ -90,6 +90,13 @@ Hull.component('quotes', {
       if(component.options.nextQuoteIndex >= component.options.fetchedQuotesLength) // we reached the end of the fetched quotes
       {
         component.options.nextQuoteIndex = 0;
+        if(component.options.page == component.options.data.quotes.pagination.pages) //last page
+        {
+          component.options.page = 0;
+        } else {
+          component.options.page++;
+        }
+        component.render();
       }
       component.options.nextQuote = component.options.data.quotes.data[component.options.nextQuoteIndex];
       currentActiveDiv.find('#quoteText').text(component.options.nextQuote.name);
