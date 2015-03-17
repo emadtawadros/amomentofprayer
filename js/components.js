@@ -67,14 +67,16 @@ Hull.component('quotes', {
     this.options.fetchedQuotesLength = data.quotes.data.length;
   },
   afterRender: function(data) {
-    var currentQuote = this.$el.find('[data-isActive="true"]');
-    currentQuote.find('#quoteText').text(this.options.currentQuote.name);
-    currentQuote.find('#quoteAuthor').text(this.options.currentQuote.description);
+    if(this.options.nextQuoteIndex != 0) {
+      var currentQuote = this.$el.find('[data-isActive="true"]');
+      currentQuote.find('#quoteText').text(this.options.currentQuote.name);
+      currentQuote.find('#quoteAuthor').text(this.options.currentQuote.description);
     
-    var nextQuote = this.$el.find('[data-isActive="false"]');
-    nextQuote.find('#quoteText').text(this.options.nextQuote.name);
-    nextQuote.find('#quoteAuthor').text(this.options.nextQuote.description);
-    
+      var nextQuote = this.$el.find('[data-isActive="false"]');
+      nextQuote.find('#quoteText').text(this.options.nextQuote.name);
+      nextQuote.find('#quoteAuthor').text(this.options.nextQuote.description);
+    }
+
     this.rotateQuotes(this);
   },
   actions: {
