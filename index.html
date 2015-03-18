@@ -16,6 +16,8 @@
 <script type='text/javascript'>
 
 var quoteFlipTime = 10000;
+var prayerFlipTime = 10000;
+
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '624324014362410',
@@ -98,6 +100,17 @@ Hull.init({
     <div data-hull-component="prayer" data-hull-id="{{id}}"></div>
 </script>
 
+<script type='text/handlebars' data-hull-template='prayershub/prayershub'>
+<div data-isActive="true">
+    <div id="prayerText"></div>
+    <div id="prayerOwner"></div>
+</div>
+<div data-isActive="false" style="display:none;">
+    <div id="prayerText"></div>
+    <div id="prayerOwner"></div>
+</div>
+</script>
+
 <script type='text/handlebars' data-hull-template='quotes/quotes'>
 <div data-isActive="true">
     <div id="quoteText"></div>
@@ -114,6 +127,7 @@ Hull.init({
     <div data-hull-component="createquoteform"></div>
     <div data-hull-component="submitprayerform"></div>
     <div data-hull-component="unapprovedprayers"></div>
+    <div data-hull-component="prayershub"></div>
     <div data-hull-component="quotes"></div>
     <div data-hull-component="login/profile@hull" data-hull-provider="facebook"></div>
 </script>
