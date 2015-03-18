@@ -78,7 +78,16 @@ Hull.init({
  <script type='text/handlebars' data-hull-template='unapprovedprayers/unapprovedprayers'>
     <h1>Unapproved Prayers</h1>
     {{#each unapprovedprayerslist}}
+        <h1 data-postID="{{id}}"><a href="#/prayer/{{id}}">{{name}}</a></h1>
     {{/each}}
+</script>
+
+ <script type='text/handlebars' data-hull-template='prayer/prayer'>
+    {{prayer.name}}
+</script>
+
+ <script type='text/handlebars' data-hull-template='main/prayer'>
+    <div data-hull-component="prayer" data-hull-id="{{id}}"></div>
 </script>
 
 <script type='text/handlebars' data-hull-template='quotes/quotes'>
