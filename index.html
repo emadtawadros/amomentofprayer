@@ -8,6 +8,8 @@
 <h1>A moment of prayer is under construction</h1>
 
 <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="//documentcloud.github.io/underscore/underscore.js"></script>
+<script src="//documentcloud.github.io/backbone/backbone-min.js"></script>
 <script src="//d3f5pyioow99x0.cloudfront.net/0.8/hull.js"></script>
 <script src="js/components.js"></script>
 
@@ -76,7 +78,7 @@ Hull.init({
  <script type='text/handlebars' data-hull-template='unapprovedprayers/unapprovedprayers'>
     <h1>Unapproved Prayers</h1>
     {{#each unapprovedprayerslist}}
-        {{name}}
+        <h1 data-prayerID="{{id}}"><a href="#/prayers/{{id}}">{{name}}</a></h1>
     {{/each}}
 </script>
 
