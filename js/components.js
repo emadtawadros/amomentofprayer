@@ -216,7 +216,7 @@ Hull.component('main', {
     }, this);
     
   Backbone.history.start();
-  router.navigate('/#/maincomp');
+  router.navigate('/main');
   },
   beforeRender: function(data) {
     data.currentView = this.currentView;
