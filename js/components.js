@@ -99,6 +99,7 @@ Hull.component('prayer', {
     back: function() {
       window.location.href = '#/main';
     }
+  }
 });
 
 Hull.component('quotes', {
