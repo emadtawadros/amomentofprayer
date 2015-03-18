@@ -74,6 +74,19 @@ Hull.component('submitprayerform', {
   }
 });
 
+Hull.component('unapprovedprayers', {
+  templates: ['unapprovedprayers'],
+  datasources: {
+    unapprovedprayerslist: function() {
+      return this.api('5504676b91e0cb0be00014cd/conversations', 'get', {
+        where: {
+          'extra.approved': false
+        }
+      });
+    }
+  }
+});
+
 Hull.component('quotes', {
   templates: ['quotes'],
   datasources: {
