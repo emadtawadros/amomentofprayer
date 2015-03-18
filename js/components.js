@@ -77,9 +77,9 @@ Hull.component('quotes', {
       var nextQuote = this.$el.find('[data-isActive="false"]');
       nextQuote.find('#quoteText').text(this.options.nextQuote.name);
       nextQuote.find('#quoteAuthor').text(this.options.nextQuote.description);
+      
+      this.rotateQuotes(this);
     }
-
-    this.rotateQuotes(this);
   },
   actions: {
   },
