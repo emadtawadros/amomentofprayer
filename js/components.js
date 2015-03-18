@@ -105,17 +105,6 @@ Hull.component('quotes', {
     currentActiveDiv.fadeOut(500 , function() {
       currentActiveDiv.attr("data-isActive", "false");
       //Setting the next quote
-      if(component.options.fetchedQuotesLength >= 2)
-      {
-        component.options.nextQuote = component.options.data.quotes.data[component.options.nextQuoteIndex];
-        currentActiveDiv.find('#quoteText').text(component.options.nextQuote.name);
-        currentActiveDiv.find('#quoteAuthor').text(component.options.nextQuote.description);
-      }
-
-
-      currentInactiveDiv.fadeIn(500, function() {
-        currentInactiveDiv.attr("data-isActive", "true");
-        
       component.options.nextQuoteIndex++;
 
       var flipping = false; 
@@ -131,6 +120,17 @@ Hull.component('quotes', {
         }
       }
       
+      if(component.options.fetchedQuotesLength >= 2 && !flipping)
+      {
+        component.options.nextQuote = component.options.data.quotes.data[component.options.nextQuoteIndex];
+        currentActiveDiv.find('#quoteText').text(component.options.nextQuote.name);
+        currentActiveDiv.find('#quoteAuthor').text(component.options.nextQuote.description);
+      }
+
+
+      currentInactiveDiv.fadeIn(500, function() {
+        currentInactiveDiv.attr("data-isActive", "true");
+        
         setTimeout(function(){
           console.log("Current page: " + component.options.page);
           console.log("next quote index: " + component.options.nextQuoteIndex);
