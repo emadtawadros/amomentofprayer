@@ -51,13 +51,14 @@ Hull.component('mynotifications', {
   beforeRender: function(data, errors) {
   },
   afterRender: function(data) {
+    var notificationsDiv = this.$el.find('#notificationsDiv');
     var notifications = new $.ttwNotificationMenu({
       colors:['#f56c7e', '#fec151', '#7ad2f4']
     }); 
     
     //Add bubbles to a menu 
     notifications.initMenu({ 
-      someCategory:'#notificationsDiv'
+      someCategory: notificationsDiv
     }); 
   }
 });
