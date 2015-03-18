@@ -88,6 +88,8 @@ Hull.component('quotes', {
     currentActiveDiv.fadeOut(500 , function() {
       currentActiveDiv.attr("data-isActive", "false");
       //Setting the next quote
+      component.options.nextQuoteIndex++;
+
       if(component.options.nextQuoteIndex >= component.options.fetchedQuotesLength) // we reached the end of the fetched quotes
       {
         component.options.nextQuoteIndex = 0;
