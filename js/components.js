@@ -194,7 +194,7 @@ Hull.component('quotes', {
 });
 
 Hull.component('main', {
-  templates: ['main', 'prayer'],
+  templates: ['main'],
   initialize: function(){
     var myRouter = Backbone.Router.extend({
       routes: {
