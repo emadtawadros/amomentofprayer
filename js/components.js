@@ -109,9 +109,11 @@ Hull.component('quotes', {
         currentInactiveDiv.attr("data-isActive", "true");
         
       component.options.nextQuoteIndex++;
-
+      
+      var fliiping = false; 
       if(component.options.nextQuoteIndex >= component.options.fetchedQuotesLength) // we reached the end of the fetched quotes
       {
+        flipping = true;
         component.options.currentQuoteIndex = 0;
         component.options.nextQuoteIndex = 1;
         component.options.page++;
@@ -119,13 +121,19 @@ Hull.component('quotes', {
         {
           component.options.page = 1;
         }
-        component.render();
       }
       
         setTimeout(function(){
           console.log("Current page: " + component.options.page);
           console.log("next quote index: " + component.options.nextQuoteIndex);
-          component.rotateQuotes(component)
+          if(flipping)
+          {
+            flipping = false;
+            component.render();
+          }
+          else {
+            component.rotateQuotes(component)
+          }
         }, 5000);
       });
     });
