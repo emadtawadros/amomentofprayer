@@ -105,6 +105,10 @@ Hull.component('quotes', {
         component.options.currentQuoteIndex = 0;
         component.options.nextQuoteIndex = 1;
         component.options.page++;
+        if(component.options.page > component.options.data.quotes.pagination.pages)
+        {
+          component.options.page = 1;
+        }
         component.render();
       }
       
