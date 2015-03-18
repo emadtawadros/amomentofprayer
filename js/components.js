@@ -94,7 +94,11 @@ Hull.component('prayer', {
   templates: ['prayer'],
   datasources: {
     prayer: ':id'
-  }
+  },
+  actions: {
+    back: function() {
+      window.location.href = '#/main';
+    }
 });
 
 Hull.component('quotes', {
