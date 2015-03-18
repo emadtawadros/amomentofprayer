@@ -113,6 +113,110 @@ Hull.component('prayer', {
   }
 });
 
+Hull.component('prayershub', {
+  templates: ['prayershub'],
+  datasources: {
+   prayers: function() {
+     return this.api('550467c3528154b44e0011c0/conversations', 'get', {
+       'wrapped': true,
+       'page': this.options.page,
+       where: {
+          'extra.approved': true
+        }
+     });
+   }
+  },
+  initialize: function(){
+    this.options.page = 1;
+    this.options.currentPrayerIndex = 0;
+    this.options.nextPrayerIndex = 1;
+  },
+  beforeRender: function(data, errors) {
+    this.options.data = data;
+    this.options.currentPrayer = data.prayers.data[this.options.currentPrayerIndex];
+    if(data.prayers.data.length >=2)
+    {
+      this.options.nextPrayer = data.prayers.data[this.options.nextPrayerIndex];
+    }
+    
+    this.options.fetchedPrayersLength = data.prayers.data.length;
+  },
+  afterRender: function(data) {
+    var component = this;
+    
+    var currentPrayer = this.$el.find('[data-isActive="true"]');
+    currentPrayer.fadeOut(500, function(){
+      currentPrayer.find('#prayerText').text(component.options.currentPrayer.description);
+      currentPrayer.find('#prayerOwner').text(component.options.currentPrayer.extra.owner);
+      
+      currentPrayer.fadeIn(500, function(){
+        setTimeout(function(){
+          if(component.options.fetchedPrayersLength >= 2)
+          {
+            var nextPrayer = component.$el.find('[data-isActive="false"]');
+            nextPrayer.find('#prayerText').text(component.options.nextPrayer.description);
+            nextPrayer.find('#prayerOwner').text(component.options.nextPrayer.extra.owner);
+          }
+          
+          if(component.options.nextPrayerIndex != 0) {
+            component.rotatePrayers(component);
+          }
+        }, prayerFlipTime);
+
+      });
+    });
+
+  },
+  actions: {
+  },
+  rotatePrayers: function (component) {
+    var currentActiveDiv = component.$el.find('[data-isActive="true"]');
+    var currentInactiveDiv = component.$el.find('[data-isActive="false"]');
+    
+    currentActiveDiv.fadeOut(500, function() {
+      currentActiveDiv.attr("data-isActive", "false");
+      //Setting the next prayer
+      component.options.nextPrayerIndex++;
+
+      var flipping = false; 
+      if(component.options.nextPrayerIndex >= component.options.fetchedPrayersLength) // we reached the end of the fetched prayer
+      {
+        flipping = true;
+        component.options.currentPrayerIndex = 0;
+        component.options.nextPrayerIndex = 1;
+        component.options.page++;
+        if(component.options.page > component.options.data.prayers.pagination.pages)
+        {
+          component.options.page = 1;
+        }
+      }
+      
+      if(component.options.fetchedPrayersLength >= 2 && !flipping)
+      {
+        component.options.nextPrayer = component.options.data.prayers.data[component.options.nextPrayerIndex];
+        currentActiveDiv.find('#prayerText').text(component.options.nextQuote.description);
+        currentActiveDiv.find('#prayerOwner').text(component.options.nextQuote.extra.owner);
+      }
+
+
+      currentInactiveDiv.fadeIn(500, function() {
+        currentInactiveDiv.attr("data-isActive", "true");
+        
+        setTimeout(function(){
+          if(flipping)
+          {
+            flipping = false;
+            component.render();
+          }
+          else {
+            component.rotatePrayers(component)
+          }
+        }, prayerFlipTime);
+      });
+    });
+  }
+});
+
 Hull.component('quotes', {
   templates: ['quotes'],
   datasources: {
