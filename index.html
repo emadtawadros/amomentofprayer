@@ -65,6 +65,14 @@ Hull.init({
     <button type="button" id="createQuote" data-hull-action="createquote">Create</button>
 </script>
 
+ <script type='text/handlebars' data-hull-template='submitprayerform/submitprayerform'>
+    <h1>Submit a new prayer</h1>
+    <input type="text" placeholder="Prayer Title" id="prayerTitle"></input>
+    <input type="text" placeholder="Pray for?" id="prayerOwner"></input>
+    <textarea id="prayerText" placeholder="Prayer Text"></textarea>
+    <button type="button" id="submitPrayer" data-hull-action="submitprayer">Submit</button>
+</script>
+
 <script type='text/handlebars' data-hull-template='quotes/quotes'>
 <div data-isActive="true">
     <div id="quoteText"></div>
@@ -78,6 +86,7 @@ Hull.init({
 
 <div data-hull-component="createentityform"></div>
 <div data-hull-component="createquoteform"></div>
+<div data-hull-component="submitprayerform"></div>
 <div data-hull-component="quotes"></div>
 <div data-hull-component="login/profile@hull" data-hull-provider="facebook"></div>
 
