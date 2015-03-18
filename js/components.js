@@ -102,8 +102,8 @@ Hull.component('quotes', {
 
       if(component.options.nextQuoteIndex >= component.options.fetchedQuotesLength) // we reached the end of the fetched quotes
       {
-        this.options.currentQuoteIndex = 0;
-        this.options.nextQuoteIndex = 1;
+        component.options.currentQuoteIndex = 0;
+        component.options.nextQuoteIndex = 1;
         component.options.page++;
         component.render();
       }
