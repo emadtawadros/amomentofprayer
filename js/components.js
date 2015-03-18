@@ -146,16 +146,20 @@ Hull.component('prayershub', {
     
     var currentPrayer = this.$el.find('[data-isActive="true"]');
     currentPrayer.fadeOut(500, function(){
-      currentPrayer.find('#prayerText').text(component.options.currentPrayer.description);
-      currentPrayer.find('#prayerOwner').text(component.options.currentPrayer.extra.owner);
-      
+      if(component.options.currentPrayer) {
+        currentPrayer.find('#prayerText').text(component.options.currentPrayer.description);
+        currentPrayer.find('#prayerOwner').text(component.options.currentPrayer.extra.owner);
+      }
       currentPrayer.fadeIn(500, function(){
         setTimeout(function(){
           if(component.options.fetchedPrayersLength >= 2)
           {
             var nextPrayer = component.$el.find('[data-isActive="false"]');
-            nextPrayer.find('#prayerText').text(component.options.nextPrayer.description);
-            nextPrayer.find('#prayerOwner').text(component.options.nextPrayer.extra.owner);
+            if(component.options.nextPrayer)
+            {
+              nextPrayer.find('#prayerText').text(component.options.nextPrayer.description);
+              nextPrayer.find('#prayerOwner').text(component.options.nextPrayer.extra.owner);
+            }
           }
           
           if(component.options.nextPrayerIndex != 0) {
