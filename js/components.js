@@ -90,10 +90,12 @@ Hull.component('quotes', {
       currentActiveDiv.attr("data-isActive", "false");
       //Setting the next quote
 
-      
-      component.options.nextQuote = component.options.data.quotes.data[component.options.nextQuoteIndex];
-      currentActiveDiv.find('#quoteText').text(component.options.nextQuote.name);
-      currentActiveDiv.find('#quoteAuthor').text(component.options.nextQuote.description);
+      if(components.options.fetchedQuotesLength >= 2)
+      {
+        component.options.nextQuote = component.options.data.quotes.data[component.options.nextQuoteIndex];
+        currentActiveDiv.find('#quoteText').text(component.options.nextQuote.name);
+        currentActiveDiv.find('#quoteAuthor').text(component.options.nextQuote.description);
+      }
 
       currentInactiveDiv.fadeIn(500, function() {
         currentInactiveDiv.attr("data-isActive", "true");
