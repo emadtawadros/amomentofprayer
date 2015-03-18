@@ -61,7 +61,7 @@ Hull.component('mynotifications', {
       someCategory: notificationsDiv
     }); 
     
-    var notification = notifications.creatNotification('some notification'); 
+    var notification = notifications.createNotification('some notification'); 
 
   }
 });
