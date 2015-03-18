@@ -304,8 +304,6 @@ Hull.component('quotes', {
         currentInactiveDiv.attr("data-isActive", "true");
         
         setTimeout(function(){
-          console.log("Current page: " + component.options.page);
-          console.log("next quote index: " + component.options.nextQuoteIndex);
           if(flipping)
           {
             flipping = false;
