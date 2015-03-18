@@ -78,7 +78,7 @@ Hull.component('unapprovedprayers', {
   templates: ['unapprovedprayers'],
   datasources: {
     unapprovedprayerslist: function() {
-      return this.api('5504676b91e0cb0be00014cd/conversations', 'get', {
+      return this.api('550467c3528154b44e0011c0/conversations', 'get', {
         where: {
           'extra.approved': false
         }
