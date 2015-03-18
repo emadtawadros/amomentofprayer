@@ -90,6 +90,13 @@ Hull.component('unapprovedprayers', {
   }
 });
 
+Hull.component('prayer', {
+  templates: ['prayer'],
+  datasources: {
+    prayer: ':id'
+  }
+});
+
 Hull.component('quotes', {
   templates: ['quotes'],
   datasources: {
