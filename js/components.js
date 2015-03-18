@@ -114,7 +114,7 @@ Hull.component('quotes', {
         
       component.options.nextQuoteIndex++;
       
-      var fliiping = false; 
+      var flipping = false; 
       if(component.options.nextQuoteIndex >= component.options.fetchedQuotesLength) // we reached the end of the fetched quotes
       {
         flipping = true;
