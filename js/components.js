@@ -73,11 +73,11 @@ Hull.component('quotes', {
     var component = this;
     
     var currentQuote = this.$el.find('[data-isActive="true"]');
-    currentQuote.fadeOut(500, function(){
+    currentQuote.fadeTo(500, 0, function(){
       currentQuote.find('#quoteText').text(component.options.currentQuote.name);
       currentQuote.find('#quoteAuthor').text(component.options.currentQuote.description);
       
-      currentQuote.fadeIn(500, function(){
+      currentQuote.fadeTo(500, 1, function(){
         setTimeout(function(){
           if(component.options.fetchedQuotesLength >= 2)
           {
@@ -101,7 +101,7 @@ Hull.component('quotes', {
     var currentActiveDiv = component.$el.find('[data-isActive="true"]');
     var currentInactiveDiv = component.$el.find('[data-isActive="false"]');
     
-    currentActiveDiv.fadeOut(500 , function() {
+    currentActiveDiv.fadeTo(500, 0, function() {
       currentActiveDiv.attr("data-isActive", "false");
       //Setting the next quote
       component.options.nextQuoteIndex++;
@@ -127,7 +127,7 @@ Hull.component('quotes', {
       }
 
 
-      currentInactiveDiv.fadeIn(500, function() {
+      currentInactiveDiv.fadeTo(500, 1, function() {
         currentInactiveDiv.attr("data-isActive", "true");
         
         setTimeout(function(){
