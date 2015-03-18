@@ -78,16 +78,19 @@ Hull.component('quotes', {
       currentQuote.find('#quoteAuthor').text(component.options.currentQuote.description);
       
       currentQuote.fadeIn(500, function(){
-        if(component.options.fetchedQuotesLength >= 2)
-        {
-          var nextQuote = component.$el.find('[data-isActive="false"]');
-          nextQuote.find('#quoteText').text(component.options.nextQuote.name);
-          nextQuote.find('#quoteAuthor').text(component.options.nextQuote.description);
-        }
-        
-        if(component.options.nextQuoteIndex != 0) {
-          component.rotateQuotes(component);
-        }
+        setTimeout(function(){
+          if(component.options.fetchedQuotesLength >= 2)
+          {
+            var nextQuote = component.$el.find('[data-isActive="false"]');
+            nextQuote.find('#quoteText').text(component.options.nextQuote.name);
+            nextQuote.find('#quoteAuthor').text(component.options.nextQuote.description);
+          }
+          
+          if(component.options.nextQuoteIndex != 0) {
+            component.rotateQuotes(component);
+          }
+        }, 5000);
+
       });
     });
 
