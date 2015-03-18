@@ -44,6 +44,10 @@ Hull.component('createquoteform', {
   }
 });
 
+Hull.component('mynotifications', {
+  templates: ['mynotifications']
+});
+
 Hull.component('submitprayerform', {
   templates: ['submitprayerform'],
   actions: {
