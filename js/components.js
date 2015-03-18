@@ -94,11 +94,6 @@ Hull.component('prayer', {
   templates: ['prayer'],
   datasources: {
     prayer: ':id'
-  },
-  actions: {
-    back: function() {
-      window.location.href = '#/main';
-    }
   }
 });
 
@@ -220,12 +215,8 @@ Hull.component('main', {
       this.render(tpl, { id: id });
     }, this);
     
-    this.sandbox.on('hullagram.route', function(route) {
-      router.navigate(route, { trigger: true });
-    });
-    
-
   Backbone.history.start();
+  router.navigate('/#/maincomp');
   },
   beforeRender: function(data) {
     data.currentView = this.currentView;
