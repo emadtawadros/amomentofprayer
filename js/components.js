@@ -94,6 +94,22 @@ Hull.component('prayer', {
   templates: ['prayer'],
   datasources: {
     prayer: ':id'
+  },
+  actions: {
+    approve: function() {
+      this.api(this.options.id, 'put', {
+        "extra": {
+          "approved": true
+        }
+      }).then(function() {
+        window.location.href = '#/main';
+      }); 
+    },
+    delete: function () {
+      this.api(this.options.id, 'delete').then(function() {
+        window.location.href = '#/main';
+      }); 
+    }
   }
 });
 
