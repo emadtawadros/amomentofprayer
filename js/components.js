@@ -84,6 +84,9 @@ Hull.component('unapprovedprayers', {
         }
       });
     }
+  },
+  beforeRender: function(data, errors) {
+    console.log(data);
   }
 });
 
