@@ -62,8 +62,10 @@ Hull.component('quotes', {
   },
   beforeRender: function(data, errors) {
     this.options.data = data;
-    this.options.currentQuote = data.quotes.data[this.options.currentQuoteIndex];
-    this.options.nextQuote = data.quotes.data[this.options.nextQuoteIndex];
+    if(this.options.nextQuoteIndex != 0) {
+      this.options.currentQuote = data.quotes.data[this.options.currentQuoteIndex];
+      this.options.nextQuote = data.quotes.data[this.options.nextQuoteIndex];
+    }
     this.options.fetchedQuotesLength = data.quotes.data.length;
   },
   afterRender: function(data) {
@@ -93,6 +95,8 @@ Hull.component('quotes', {
       if(component.options.nextQuoteIndex >= component.options.fetchedQuotesLength) // we reached the end of the fetched quotes
       {
         component.options.nextQuoteIndex = 0;
+        component.options.page++;
+        component.render();
       }
       
       component.options.nextQuote = component.options.data.quotes.data[component.options.nextQuoteIndex];
