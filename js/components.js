@@ -73,8 +73,11 @@ Hull.component('quotes', {
   afterRender: function(data) {
     
     var currentQuote = this.$el.find('[data-isActive="true"]');
-    currentQuote.find('#quoteText').text(this.options.currentQuote.name);
-    currentQuote.find('#quoteAuthor').text(this.options.currentQuote.description);
+    currentQuote.fadeOut(500, function() {
+      currentQuote.find('#quoteText').text(this.options.currentQuote.name);
+      currentQuote.find('#quoteAuthor').text(this.options.currentQuote.description);
+    });
+  currentQuote.fadeIn(500);
   
   if(this.options.fetchedQuotesLength >= 2)
   {
