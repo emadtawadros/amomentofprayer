@@ -50,7 +50,6 @@ Hull.component('quotes', {
    quotes: function() {
      return this.api('5504676b91e0cb0be00014cd/conversations', 'get', {
        'wrapped': true,
-       'per_page': 2,
        'page': this.options.page
      });
    }
