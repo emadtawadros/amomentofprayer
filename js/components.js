@@ -60,6 +60,9 @@ Hull.component('mynotifications', {
     notifications.initMenu({ 
       someCategory: notificationsDiv
     }); 
+    
+    var notification = notifications.creatNotification('some notification'); 
+
   }
 });
 
