@@ -44,6 +44,36 @@ Hull.component('createquoteform', {
   }
 });
 
+Hull.component('submitprayerform', {
+  templates: ['submitprayerform'],
+  actions: {
+    submitprayer: function(){
+        var component = this;
+        
+        var prayerTitle = this.$el.find('#prayerTitle').val();
+        var prayerOwner = this.$el.find('#prayerOwner').val();
+        var prayerText = this.$el.find('#prayerText').val();
+
+        if(prayerTitle && prayerOwner && prayerText)
+        {
+          component.api('/550467c3528154b44e0011c0/conversations', 'post',{
+            "public": "true",
+            "name": prayerTitle,
+            "description": prayerText,
+            "extra": {
+                			"owner": prayerOwner,
+                			"approved": false,
+                			"lastKnownApprovalStatus": false,
+                			"lastKnownPrayersNumber": 0
+            }
+          }).then(function(response) {
+            console.log(response);
+          });
+        }
+    }
+  }
+});
+
 Hull.component('quotes', {
   templates: ['quotes'],
   datasources: {
