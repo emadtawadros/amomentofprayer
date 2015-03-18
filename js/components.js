@@ -45,7 +45,18 @@ Hull.component('createquoteform', {
 });
 
 Hull.component('mynotifications', {
-  templates: ['mynotifications']
+  templates: ['mynotifications'],
+  initialize: function() {
+    var notifications = new $.ttwNotificationMenu({
+      colors:['#f56c7e', '#fec151', '#7ad2f4']
+    }); 
+    
+    //Add bubbles to a menu 
+    notifications.initMenu({ 
+      someCategory:'#notificationsDiv'
+    }); 
+
+  }
 });
 
 Hull.component('submitprayerform', {
