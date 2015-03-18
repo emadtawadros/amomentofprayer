@@ -224,9 +224,8 @@ Hull.component('main', {
       router.navigate(route, { trigger: true });
     });
     
-    setTimeout(function() {
-      Backbone.history.start();
-    }, 200);
+
+  Backbone.history.start();
   },
   beforeRender: function(data) {
     data.currentView = this.currentView;
