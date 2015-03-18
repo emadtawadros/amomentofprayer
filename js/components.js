@@ -192,3 +192,32 @@ Hull.component('quotes', {
     });
   }
 });
+
+Hull.component('main', {
+  templates: ['main', 'prayer'],
+  initialize: function(){
+    var myRouter = Backbone.Router.extend({
+      routes: {
+        ':view(/:id)(/:action)' : 'view'
+      }
+    });
+    var router  = new myRouter();
+    router.on('route:view', function(view, id, action) {
+      var tpl = action || view || 'main';
+      this.currentView = tpl;
+      this.render(tpl, { id: id });
+    }, this);
+    
+    this.sandbox.on('hullagram.route', function(route) {
+      router.navigate(route, { trigger: true });
+    });
+    
+    setTimeout(function() {
+      Backbone.history.start();
+    }, 200);
+  },
+  beforeRender: function(data) {
+    data.currentView = this.currentView;
+    return data;
+  }
+});
