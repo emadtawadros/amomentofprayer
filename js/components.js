@@ -89,7 +89,7 @@ Hull.component('quotes', {
           if(component.options.nextQuoteIndex != 0) {
             component.rotateQuotes(component);
           }
-        }, 5000);
+        }, quoteFlipTime);
 
       });
     });
@@ -141,7 +141,7 @@ Hull.component('quotes', {
           else {
             component.rotateQuotes(component)
           }
-        }, 5000);
+        }, quoteFlipTime);
       });
     });
   }
