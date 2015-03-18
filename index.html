@@ -42,10 +42,13 @@ Hull.init({
          console.log(response);
      });
      
-     Hull.api('5504676b91e0cb0be00014cd/conversations', 'get', {
-         "page": 2
-     }).then(function(response) {
+     Hull.api('5504676b91e0cb0be00014cd/conversations', 'get').then(function(response) {
          console.log("Quotes");
+         console.log(response);
+     });
+     
+     Hull.api('550467c3528154b44e0011c0/conversations', 'get').then(function(response) {
+         console.log("Prayers");
          console.log(response);
      });
 });
@@ -85,7 +88,7 @@ Hull.init({
  <script type='text/handlebars' data-hull-template='prayer/prayer'>
     <h1>{{prayer.name}}</h1>
     <p>pray for {{prayer.extra.owner}} </p>
-    <p>{{prayer.description}}>/p>
+    <p>{{prayer.description}}></p>
     <button type="button" id="approvePrayer" data-hull-action="approve">Approve</button>
     <button type="button" id="deletePrayer" data-hull-action="delete">Delete</button>
 
