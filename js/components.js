@@ -62,22 +62,21 @@ Hull.component('quotes', {
   },
   beforeRender: function(data, errors) {
     this.options.data = data;
-    if(this.options.nextQuoteIndex != 0) {
-      this.options.currentQuote = data.quotes.data[this.options.currentQuoteIndex];
-      this.options.nextQuote = data.quotes.data[this.options.nextQuoteIndex];
-    }
+    this.options.currentQuote = data.quotes.data[this.options.currentQuoteIndex];
+    this.options.nextQuote = data.quotes.data[this.options.nextQuoteIndex];
+    
     this.options.fetchedQuotesLength = data.quotes.data.length;
   },
   afterRender: function(data) {
-    if(this.options.nextQuoteIndex != 0) {
-      var currentQuote = this.$el.find('[data-isActive="true"]');
-      currentQuote.find('#quoteText').text(this.options.currentQuote.name);
-      currentQuote.find('#quoteAuthor').text(this.options.currentQuote.description);
     
-      var nextQuote = this.$el.find('[data-isActive="false"]');
-      nextQuote.find('#quoteText').text(this.options.nextQuote.name);
-      nextQuote.find('#quoteAuthor').text(this.options.nextQuote.description);
-      
+    var currentQuote = this.$el.find('[data-isActive="true"]');
+    currentQuote.find('#quoteText').text(this.options.currentQuote.name);
+    currentQuote.find('#quoteAuthor').text(this.options.currentQuote.description);
+  
+    var nextQuote = this.$el.find('[data-isActive="false"]');
+    nextQuote.find('#quoteText').text(this.options.nextQuote.name);
+    nextQuote.find('#quoteAuthor').text(this.options.nextQuote.description);
+    if(this.options.nextQuoteIndex != 0) {
       this.rotateQuotes(this);
     }
   },
