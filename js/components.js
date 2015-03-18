@@ -47,6 +47,10 @@ Hull.component('createquoteform', {
 Hull.component('mynotifications', {
   templates: ['mynotifications'],
   initialize: function() {
+  },
+  beforeRender: function(data, errors) {
+  },
+  afterRender: function(data) {
     var notifications = new $.ttwNotificationMenu({
       colors:['#f56c7e', '#fec151', '#7ad2f4']
     }); 
@@ -55,7 +59,6 @@ Hull.component('mynotifications', {
     notifications.initMenu({ 
       someCategory:'#notificationsDiv'
     }); 
-
   }
 });
 
