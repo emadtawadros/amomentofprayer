@@ -93,12 +93,16 @@ Hull.init({
 </div>
 </script>
 
-<div data-hull-component="createentityform"></div>
-<div data-hull-component="createquoteform"></div>
-<div data-hull-component="submitprayerform"></div>
-<div data-hull-component="unapprovedprayers"></div>
-<div data-hull-component="quotes"></div>
-<div data-hull-component="login/profile@hull" data-hull-provider="facebook"></div>
+<script type='text/handlebars' data-hull-template='main/main'>
+    <div data-hull-component="createentityform"></div>
+    <div data-hull-component="createquoteform"></div>
+    <div data-hull-component="submitprayerform"></div>
+    <div data-hull-component="unapprovedprayers"></div>
+    <div data-hull-component="quotes"></div>
+    <div data-hull-component="login/profile@hull" data-hull-provider="facebook"></div>
+</script>
+
+<div data-hull-component="main"></div>
 
 <div
   class="fb-like"
