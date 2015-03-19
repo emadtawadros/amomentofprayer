@@ -57,7 +57,7 @@ Hull.component('mynotifications', {
         offset:'0 15'
       },
       notificationClickCallback:function(notification){
-        console.log(notification);
+         window.location.href = '#/prayer/'+ notification.settings.value;
       }
     }); 
     
