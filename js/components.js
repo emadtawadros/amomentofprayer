@@ -53,7 +53,10 @@ Hull.component('mynotifications', {
   afterRender: function(data) {
     var notificationsDiv = this.$el.find('#notificationsDiv');
     var notifications = new $.ttwNotificationMenu({
-      colors:['#f56c7e', '#fec151', '#7ad2f4']
+      notificationList:{
+        anchor:'item',
+        offset:'0 15'
+      }
     }); 
     
     //Add bubbles to a menu 
