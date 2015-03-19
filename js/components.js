@@ -68,7 +68,8 @@ Hull.component('mynotifications', {
     
     var notification = notifications.createNotification({
       message: 'eshta',
-      category: 'someCategory'
+      category: 'someCategory',
+      value: 'sikosiko'
     });
     
     this.api('/550467c3528154b44e0011c0/conversations', 'get', {
