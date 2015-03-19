@@ -58,7 +58,7 @@ Hull.component('mynotifications', {
     
     //Add bubbles to a menu 
     notifications.initMenu({ 
-      someCategory: notificationsDiv
+      someCategory: '#notificationsDiv'
     }); 
     
     var notification = notifications.createNotification({
