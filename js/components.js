@@ -51,11 +51,13 @@ Hull.component('mynotifications', {
   beforeRender: function(data, errors) {
   },
   afterRender: function(data) {
-    var notificationsDiv = this.$el.find('#notificationsDiv');
     var notifications = new $.ttwNotificationMenu({
       notificationList:{
         anchor:'item',
         offset:'0 15'
+      },
+      notificationClickCallback:function(notification){
+        console.log(notification);
       }
     }); 
     
