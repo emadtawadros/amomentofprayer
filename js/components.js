@@ -78,6 +78,13 @@ Hull.component('mynotifications', {
       }
     }).then(function(response) {
       console.log(reponse);
+      $.each(response, funciton(index, value) {
+        var notification = notifications.createNotification({
+          message: 'value.name,
+          category: 'someCategory',
+          value: value.id
+        });
+      });
     });
   }
 });
