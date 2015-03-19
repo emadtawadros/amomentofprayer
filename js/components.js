@@ -1,7 +1,6 @@
 Hull.component('createentityform', {
   templates: ['createentityform'],
   actions: {
-    createentity: function(){
         var component = this;
         var newEntityName = this.$el.find('#newEntityField').val();
         var newEntityID = this.sandbox.util.entity.encode("http://amomentofprayer.azurewebsites.net/prayers");
@@ -71,7 +70,7 @@ Hull.component('mynotifications', {
     
     this.api('/550467c3528154b44e0011c0/conversations', 'get', {
       where: {
-        "actor.id": data.me.id
+        "actor_id": data.me.id
       }
     }).then(function(response) {
       console.log(reponse);
