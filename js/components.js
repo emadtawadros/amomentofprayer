@@ -45,6 +45,11 @@ Hull.component('createquoteform', {
 });
 
 Hull.component('mynotifications', {
+  datasources: {
+    myprayers: function() {
+      return this.api('/me/conversations', 'get');
+    }
+  },
   templates: ['mynotifications'],
   initialize: function() {
   },
