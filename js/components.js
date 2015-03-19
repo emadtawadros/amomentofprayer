@@ -73,7 +73,6 @@ Hull.component('mynotifications', {
         "actor_id": data.me.id
       }
     }).then(function(response) {
-      console.log(response);
       $.each(response, function(index, value){
         var notification = notifications.createNotification({
           message: value.name,
@@ -127,7 +126,6 @@ Hull.component('unapprovedprayers', {
     }
   },
   beforeRender: function(data, errors) {
-    console.log(data);
   }
 });
 
