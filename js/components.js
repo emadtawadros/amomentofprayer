@@ -77,7 +77,7 @@ Hull.component('mynotifications', {
         "actor_id": data.me.id
       }
     }).then(function(response) {
-      console.log(reponse);
+      console.log(response);
       $.each(response, function(index, value){
         console.log(value.name);
       });
