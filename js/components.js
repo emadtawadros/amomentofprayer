@@ -167,33 +167,38 @@ Hull.component('prayershub', {
     this.options.fetchedPrayersLength = data.prayers.data.length;
   },
   afterRender: function(data) {
-    var component = this;
+    if(data.prayers.data.length == 0) {
+      this.refresh()
+    } else {
+      var component = this;
     
-    var currentPrayer = this.$el.find('[data-isActive="true"]');
-    currentPrayer.fadeOut(500, function(){
-      if(component.options.currentPrayer) {
-        currentPrayer.find('#prayerText').text(component.options.currentPrayer.description);
-        currentPrayer.find('#prayerOwner').text(component.options.currentPrayer.extra.owner);
-      }
-      currentPrayer.fadeIn(500, function(){
-        setTimeout(function(){
-          if(component.options.fetchedPrayersLength >= 2)
-          {
-            var nextPrayer = component.$el.find('[data-isActive="false"]');
-            if(component.options.nextPrayer)
+      var currentPrayer = this.$el.find('[data-isActive="true"]');
+      currentPrayer.fadeOut(500, function(){
+        if(component.options.currentPrayer) {
+          currentPrayer.find('#prayerText').text(component.options.currentPrayer.description);
+          currentPrayer.find('#prayerOwner').text(component.options.currentPrayer.extra.owner);
+        }
+        currentPrayer.fadeIn(500, function(){
+          setTimeout(function(){
+            if(component.options.fetchedPrayersLength >= 2)
             {
-              nextPrayer.find('#prayerText').text(component.options.nextPrayer.description);
-              nextPrayer.find('#prayerOwner').text(component.options.nextPrayer.extra.owner);
+              var nextPrayer = component.$el.find('[data-isActive="false"]');
+              if(component.options.nextPrayer)
+              {
+                nextPrayer.find('#prayerText').text(component.options.nextPrayer.description);
+                nextPrayer.find('#prayerOwner').text(component.options.nextPrayer.extra.owner);
+              }
             }
-          }
-          
-          if(component.options.nextPrayerIndex != 0) {
-            component.rotatePrayers(component);
-          }
-        }, prayerFlipTime);
-
+            
+            if(component.options.nextPrayerIndex != 0) {
+              component.rotatePrayers(component);
+            }
+          }, prayerFlipTime);
+  
+        });
       });
-    });
+    }
+
 
   },
   actions: {
