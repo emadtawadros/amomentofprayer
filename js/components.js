@@ -45,11 +45,6 @@ Hull.component('createquoteform', {
 });
 
 Hull.component('mynotifications', {
-  datasources: {
-    myprayers: function() {
-      return this.api('/me/conversations', 'get');
-    }
-  },
   templates: ['mynotifications'],
   initialize: function() {
   },
@@ -72,8 +67,15 @@ Hull.component('mynotifications', {
     var notification = notifications.createNotification({
       message: 'eshta',
       category: 'someCategory'
-    }); 
-
+    });
+    
+    this.api('/550467c3528154b44e0011c0/conversations', 'get', {
+      where: {
+        "actor.id": data.me.id
+      }
+    }).then(function(response) {
+      console.log(reponse);
+    });
   }
 });
 
