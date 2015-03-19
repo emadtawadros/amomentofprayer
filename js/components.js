@@ -61,7 +61,10 @@ Hull.component('mynotifications', {
       someCategory: notificationsDiv
     }); 
     
-    var notification = notifications.createNotification('some notification'); 
+    var notification = notifications.createNotification({
+      message: 'eshta',
+      category: 'someCategory'
+    }); 
 
   }
 });
