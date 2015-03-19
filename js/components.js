@@ -66,11 +66,7 @@ Hull.component('mynotifications', {
       someCategory: '#notificationsDiv'
     }); 
     
-    var notification = notifications.createNotification({
-      message: 'eshta',
-      category: 'someCategory',
-      value: 'sikosiko'
-    });
+
     
     this.api('/550467c3528154b44e0011c0/conversations', 'get', {
       where: {
@@ -79,7 +75,11 @@ Hull.component('mynotifications', {
     }).then(function(response) {
       console.log(response);
       $.each(response, function(index, value){
-        console.log(value.name);
+        var notification = notifications.createNotification({
+          message: value.name,
+          category: 'someCategory',
+          value: value.id
+    });
       });
     });
   }
