@@ -78,6 +78,9 @@ Hull.component('mynotifications', {
       }
     }).then(function(response) {
       console.log(reponse);
+      $.each(response, function(index, value){
+        console.log(value.name);
+      });
     });
   }
 });
