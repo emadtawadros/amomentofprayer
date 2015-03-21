@@ -58,6 +58,9 @@ Hull.component('mynotifications', {
       },
       notificationClickCallback:function(notification){
          window.location.href = '#/prayer/'+ notification.settings.value;
+      },
+      notificationMenuCloseCallback:function(notification){
+         alert("menu closed");
       }
     }); 
     
