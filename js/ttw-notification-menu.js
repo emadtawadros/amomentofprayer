@@ -43,7 +43,7 @@
             bubble:{
                 useColors:true,
                 colors:['#f56c7e', '#fec151', '#7ad2f4'],
-                showEmptyBubble:true
+                showEmptyBubble:false
             },
             showNotificationList:true,
             notificationListEmptyText:'No Notifications',
