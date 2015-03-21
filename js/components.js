@@ -62,8 +62,8 @@ Hull.component('mynotifications', {
       notificationMenuCloseCallback:function(notifications, menuItems){
          $.each(notifications['someCategory']['unread'], function (index, value) {
            value.markRead();
+           menuItems['someCategory'].updateBubble();
          });
-         menuItems['someCategory'].updateBubble();
       }
     }); 
     
