@@ -416,7 +416,7 @@
                 self.$wrapper.remove();
                 menuItems[self.settings.category].notificationList = false;
                 notificationList = false;
-                runCallback(options.notificationMenuCloseCallback, notifications);
+                runCallback(options.notificationMenuCloseCallback, notifications, menuItems);
             });
         };
 
