@@ -47,46 +47,47 @@ Hull.component('createquoteform', {
 Hull.component('mynotifications', {
   templates: ['mynotifications'],
   initialize: function() {
+    this.options.firstTime = true;
   },
   beforeRender: function(data, errors) {
   },
   afterRender: function(data) {
-    var notifications = new $.ttwNotificationMenu({
-      notificationList:{
+    if(this.options.firstTime) {
+      var notifications = new $.ttwNotificationMenu({
+        notificationList:{
         anchor:'item',
         offset:'0 15'
       },
-      notificationClickCallback:function(notification){
-         window.location.href = '#/prayer/'+ notification.settings.value;
+        notificationClickCallback:function(notification){
+          window.location.href = '#/prayer/'+ notification.settings.value;
       },
-      notificationMenuCloseCallback:function(notifications, menuItems){
-         $.each(notifications['someCategory']['unread'], function (index, value) {
-           value.markRead();
-           menuItems['someCategory'].updateBubble();
-         });
-      }
-    }); 
-    
-    //Add bubbles to a menu 
-    notifications.initMenu({ 
-      someCategory: '#notificationsDiv'
-    }); 
-    
-
-    
-    this.api('/550467c3528154b44e0011c0/conversations', 'get', {
-      where: {
-        "actor_id": data.me.id
-      }
-    }).then(function(response) {
-      $.each(response, function(index, value){
-        var notification = notifications.createNotification({
-          message: value.name,
-          category: 'someCategory',
-          value: value.id
-    });
+        notificationMenuCloseCallback:function(notifications, menuItems){
+          $.each(notifications['someCategory']['unread'], function (index, value) {
+            value.markRead();
+            menuItems['someCategory'].updateBubble();
+          });
+        }
+      }); 
+      
+      notifications.initMenu({ 
+        someCategory: '#notificationsDiv'
       });
-    });
+      
+      this.api('/550467c3528154b44e0011c0/conversations', 'get', {
+        where: {
+          "actor_id": data.me.id
+        }
+      }).then(function(response) {
+        $.each(response, function(index, value){
+          var notification = notifications.createNotification({
+            message: value.name,
+            category: 'someCategory',
+            value: value.id
+          });
+        });
+      });
+      this.options.firstTime = false;
+    }
   }
 });
 
