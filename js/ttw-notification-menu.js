@@ -381,7 +381,7 @@
                 self.type = $(this).attr('id').split('-')[0];
                 self.populate();
             });
-
+/*
             //handle clicks of mark read
             this.$wrapper.delegate('.close', 'click', function() {
                 var $this = $(this);
@@ -400,7 +400,7 @@
                     $this.remove();
                     runCallback(options.markReadCallback, thisNotification);
                 });
-            });
+            });*/
 
             //handle close button click
             this.$wrapper.find(cssSelector.notificationListCloseButton).bind('click', function() {
