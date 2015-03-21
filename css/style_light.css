@@ -263,12 +263,12 @@
 }
 
 .notification-list[data-type=unread] .close {
-    display: block;
+    /*display: block;*/
 }
 
 .notification-list-item .close:after {
     position: relative;
-    display: block;
+   /* display: block;*/
     content: 'x';
     left: 0px;
     height: 14px;
