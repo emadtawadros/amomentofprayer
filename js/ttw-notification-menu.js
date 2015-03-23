@@ -371,6 +371,7 @@
             //bind click action
             $list.find(cssSelector.notificationListItem).bind('click', function(){
                  runCallback(options.notificationClickCallback, $(this).data('notification'));
+                 self.close();
             });
 
             if (this.$list)
