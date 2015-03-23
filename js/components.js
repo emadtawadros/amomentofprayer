@@ -59,7 +59,7 @@ Hull.component('mynotifications', {
         offset:'0 15'
       },
         notificationClickCallback:function(notification){
-          window.location.href = '#/prayer/'+ notification.settings.value;
+          //window.location.href = '#/prayer/'+ notification.settings.value;
       },
         notificationMenuCloseCallback:function(notifications, menuItems){
           $.each(notifications['someCategory']['unread'], function (index, value) {
