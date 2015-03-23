@@ -55,7 +55,7 @@ Hull.component('mynotifications', {
     if(this.options.firstTime) {
       var notifications = new $.ttwNotificationMenu({
         notificationList:{
-        //anchor:'item',
+        anchor:'item',
         offset:'0 15'
       },
         notificationClickCallback:function(notification){
