@@ -188,9 +188,9 @@ Hull.component('prayershub', {
     this.options.fetchedPrayersLength = data.prayers.data.length;
   },
   afterRender: function(data) {
-    if(data.prayers.data.length == 0) {
-      this.refresh()
-    } else {
+   // if(data.prayers.data.length == 0) {
+      //this.refresh()
+   // } else {
       var component = this;
     
       var currentPrayer = this.$el.find('[data-isActive="true"]');
@@ -218,7 +218,7 @@ Hull.component('prayershub', {
   
         });
       });
-    }
+    //}
 
 
   },
