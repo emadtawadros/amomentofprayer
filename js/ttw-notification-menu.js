@@ -233,6 +233,14 @@
                         });
                     }
                 });
+                this.$item.bind('click', function() {
+                    if (!self.notificationList) {
+                        self.notificationList = new NotificationList({
+                            category:self.category,
+                            $anchor: (options.notificationList.anchor == 'bubble') ? self.$bubble : self.$item
+                        });
+                    }
+                });
             }
 
             menuItemPrevCount[this.category] = 0;
