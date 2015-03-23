@@ -249,8 +249,8 @@ Hull.component('prayershub', {
       if(component.options.fetchedPrayersLength >= 2 && !flipping)
       {
         component.options.nextPrayer = component.options.data.prayers.data[component.options.nextPrayerIndex];
-        currentActiveDiv.find('#prayerText').text(component.options.nextQuote.description);
-        currentActiveDiv.find('#prayerOwner').text(component.options.nextQuote.extra.owner);
+        currentActiveDiv.find('#prayerText').text(component.options.nextPrayer.description);
+        currentActiveDiv.find('#prayerOwner').text(component.options.nextPrayer.extra.owner);
       }
 
 
