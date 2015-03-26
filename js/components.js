@@ -166,7 +166,10 @@ Hull.component('prayershub', {
      return this.api('550467c3528154b44e0011c0/conversations', 'get', {
        'wrapped': true,
        'page': this.options.page,
-       'per_page': 2
+       'per_page': 2,
+       where: {
+          'extra.approved': false
+        }
      });
    }
   },
