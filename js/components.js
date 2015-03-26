@@ -168,7 +168,7 @@ Hull.component('prayershub', {
        'page': this.options.page,
        'per_page': 2,
        where: {
-          'extra.approved': false
+          'extra.approved': true
         }
      });
    }
