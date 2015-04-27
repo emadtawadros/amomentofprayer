@@ -144,9 +144,11 @@ Hull.init({
     <div data-hull-component="createquoteform"></div>
     <div data-hull-component="unapprovedprayers"></div>
     </p></p>
-    <div data-hull-component="mynotifications"></div>
-    <div data-hull-component="submitprayerform"></div>
-    <div data-hull-component="prayershub"></div>
+    {{#if loggedIn}}
+        <div data-hull-component="mynotifications"></div>
+        <div data-hull-component="submitprayerform"></div>
+        <div data-hull-component="prayershub"></div>
+    {{/if}}
     </p></p>
     <div data-hull-component="quotes"></div>
     </p></p>
