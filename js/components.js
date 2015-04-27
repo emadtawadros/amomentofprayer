@@ -199,6 +199,8 @@ Hull.component('prayershub', {
         if(component.options.currentPrayer) {
           currentPrayer.find('#prayerText').text(component.options.currentPrayer.description);
           currentPrayer.find('#prayerOwner').text(component.options.currentPrayer.extra.owner);
+          currentPrayer.find('#prayerID').text(component.options.currentPrayer.id);
+
         }
         currentPrayer.fadeIn(500, function(){
           setTimeout(function(){
@@ -209,6 +211,8 @@ Hull.component('prayershub', {
               {
                 nextPrayer.find('#prayerText').text(component.options.nextPrayer.description);
                 nextPrayer.find('#prayerOwner').text(component.options.nextPrayer.extra.owner);
+                nextPrayer.find('#prayerID').text(component.options.nextPrayer.id);
+
               }
             }
             
@@ -252,6 +256,8 @@ Hull.component('prayershub', {
         component.options.nextPrayer = component.options.data.prayers.data[component.options.nextPrayerIndex];
         currentActiveDiv.find('#prayerText').text(component.options.nextPrayer.description);
         currentActiveDiv.find('#prayerOwner').text(component.options.nextPrayer.extra.owner);
+        currentActiveDiv.find('#prayerID').text(component.options.nextPrayer.id);
+
       }
 
 
