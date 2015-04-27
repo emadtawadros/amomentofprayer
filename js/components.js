@@ -79,11 +79,13 @@ Hull.component('mynotifications', {
         }
       }).then(function(response) {
         $.each(response, function(index, value){
-          var notification = notifications.createNotification({
-            message: value.name,
-            category: 'someCategory',
-            value: value.id
+          if(value.extra.approved && (!(value.extra.lastKnownApprovalStatus))) {
+            var notification = notifications.createNotification({
+              message: "Your prayer " + value.name + " has been approved!",
+              category: 'someCategory',
+              value: value.id
           });
+          }
         });
       });
       this.options.firstTime = false;
