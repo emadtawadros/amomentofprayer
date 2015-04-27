@@ -140,9 +140,11 @@ Hull.init({
 </script>
 
 <script type='text/handlebars' data-hull-template='main/main'>
-    <div data-hull-component="createentityform"></div>
-    <div data-hull-component="createquoteform"></div>
-    <div data-hull-component="unapprovedprayers"></div>
+	{{#if isAdmin}}
+        <div data-hull-component="createentityform"></div>
+        <div data-hull-component="createquoteform"></div>
+        <div data-hull-component="unapprovedprayers"></div>
+    {{/if}}
     </p></p>
     {{#if loggedIn}}
         <div data-hull-component="mynotifications"></div>
