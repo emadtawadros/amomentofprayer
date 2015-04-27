@@ -83,7 +83,8 @@ Hull.component('mynotifications', {
             var notification = notifications.createNotification({
               message: "Your prayer " + value.name + " has been approved!",
               category: 'someCategory',
-              value: value.id
+              value: value.id,
+              type: 0
           });
           }
         });
