@@ -75,18 +75,20 @@ Hull.component('mynotifications', {
       
       this.api('/550467c3528154b44e0011c0/conversations', 'get', {
         where: {
-          "actor_id": data.me.id
+          "actor_id": data.me.id,
+          "extra": {
+            "approved": true,
+            "lastKnownApprovalStatus": false
+            }
         }
       }).then(function(response) {
         $.each(response, function(index, value){
-          if(value.extra.approved && (!(value.extra.lastKnownApprovalStatus))) {
-            var notification = notifications.createNotification({
-              message: "Your prayer " + value.name + " has been approved!",
-              category: 'someCategory',
-              value: value.id,
-              type: 0
+          var notification = notifications.createNotification({
+            message: "Your prayer " + value.name + " has been approved!",
+            category: 'someCategory',
+            value: value.id,
+            type: 0
           });
-          }
         });
       });
       this.options.firstTime = false;
