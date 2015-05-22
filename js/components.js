@@ -201,6 +201,13 @@ Hull.component('prayershub', {
     
       var currentPrayer = this.$el.find('[data-isActive="true"]');
       currentPrayer.fadeOut(500, function(){
+        //Here, next prayer would be the one just faded out, make a call to add a message to it
+        component.api(component.options.nextPrayer.id+'/messages', 'post',{
+          "body": "Prayed"
+        }).then(function(response) {
+          console.log(response);
+        });
+      
         if(component.options.currentPrayer) {
           currentPrayer.find('#prayerText').text(component.options.currentPrayer.description);
           currentPrayer.find('#prayerOwner').text(component.options.currentPrayer.extra.owner);
@@ -239,6 +246,13 @@ Hull.component('prayershub', {
     var currentInactiveDiv = component.$el.find('[data-isActive="false"]');
     
     currentActiveDiv.fadeOut(500, function() {
+      //Here, current prayer is the one that just faded out, make a call to add a message to it
+      component.api(component.options.currentPrayer.id+'/messages', 'post',{
+        "body": "Prayed"
+      }).then(function(response) {
+        console.log(response);
+      });
+
       currentActiveDiv.attr("data-isActive", "false");
       //Setting the next prayer
       component.options.nextPrayerIndex++;
