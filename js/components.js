@@ -73,6 +73,7 @@ Hull.component('mynotifications', {
         someCategory: '#notificationsDiv'
       });
       
+      //Getting notifications for approved prayers
       this.api('/550467c3528154b44e0011c0/conversations', 'get', {
         where: {
           "actor_id": data.me.id,
@@ -91,6 +92,22 @@ Hull.component('mynotifications', {
           });
         });
       });
+      
+      //Getting notifications for newly prayed for prayers
+      this.api('/550467c3528154b44e0011c0/conversations', 'get', {
+        where: {
+          "actor_id": data.me.id,
+          "messages_count_unread": {
+            "$gt": 0
+          }
+        }
+      }).then(function(response) {
+        console.log(response);
+        $.each(response, function(index, value){
+          //add notification
+        });
+      });
+      
       this.options.firstTime = false;
     }
   }
