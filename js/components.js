@@ -79,21 +79,12 @@ Hull.component('mynotifications', {
           "actor_id": data.me.id
         }
       }).then(function(response) {
-        var newlyApprovedPrayers = $.grep(response, function(currentElement, i){
-          return (currentElement.extra.approved && (!currentElement.extra.lastKnownApprovalStatus));
-        });
-        
         var newlyPrayedForPrayers = $.grep(response, function(currentElement, i){
           return currentElement.messages_count > currentElement.extra.lastKnownPrayersNumber;
         });
         
-        $.each(newlyApprovedPrayers, function(index, value){
-          var notification = notifications.createNotification({
-            message: "Your prayer " + value.name + " has been approved!",
-            category: 'someCategory',
-            value: value.id,
-            type: 0
-          });
+        var newlyApprovedPrayers = $.grep(response, function(currentElement, i){
+          return (currentElement.extra.approved && (!currentElement.extra.lastKnownApprovalStatus));
         });
         
         $.each(newlyPrayedForPrayers, function(index, value){
@@ -102,6 +93,15 @@ Hull.component('mynotifications', {
             category: 'someCategory',
             value: value.id,
             type: 1
+          });
+        });
+        
+        $.each(newlyApprovedPrayers, function(index, value){
+          var notification = notifications.createNotification({
+            message: "Your prayer " + value.name + " has been approved!",
+            category: 'someCategory',
+            value: value.id,
+            type: 0
           });
         });
       });
