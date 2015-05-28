@@ -83,6 +83,10 @@ Hull.component('mynotifications', {
           return (currentElement.extra.approved && (!currentElement.extra.lastKnownApprovalStatus));
         });
         
+        var newlyPrayedForPrayers = $.grep(response, function(currentElement, i){
+          return currentElement.messages_count_unread >0;
+        });
+        
         $.each(newlyApprovedPrayers, function(index, value){
           var notification = notifications.createNotification({
             message: "Your prayer " + value.name + " has been approved!",
@@ -92,40 +96,13 @@ Hull.component('mynotifications', {
           });
         });
         
-      });
-      
-      //Getting notifications for approved prayers
-      this.api('/550467c3528154b44e0011c0/conversations', 'get', {
-        where: {
-          "actor_id": data.me.id,
-          "extra": {
-            "approved": true,
-            "lastKnownApprovalStatus": false
-            }
-        }
-      }).then(function(response) {
-        $.each(response, function(index, value){
+        $.each(newlyPrayedForPrayers, function(index, value){
           var notification = notifications.createNotification({
-            message: "Your prayer " + value.name + " has been approved!",
+            message: "Your prayer " + value.name + " has been prayed for " + value.messages_count_unread + " times since your last login!",
             category: 'someCategory',
             value: value.id,
-            type: 0
+            type: 1
           });
-        });
-      });
-      
-      //Getting notifications for newly prayed for prayers
-      this.api('/550467c3528154b44e0011c0/conversations', 'get', {
-        where: {
-          "actor_id": data.me.id,
-          "messages_count_unread": {
-            "$gt": 0
-          }
-        }
-      }).then(function(response) {
-        console.log(response);
-        $.each(response, function(index, value){
-          //add notification
         });
       });
       
