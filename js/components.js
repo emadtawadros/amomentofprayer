@@ -188,7 +188,10 @@ Hull.component('prayershub', {
        'page': this.options.page,
        'per_page': 2,
        where: {
-          'extra.approved': true
+          'extra.approved': true,
+           'actor_id': {
+             '$ne': Hull.currentUser().id
+           }
         }
      });
    }
