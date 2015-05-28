@@ -73,6 +73,27 @@ Hull.component('mynotifications', {
         someCategory: '#notificationsDiv'
       });
       
+      //Getting all owned prayers then filtering locally
+      this.api('/550467c3528154b44e0011c0/conversations', 'get', {
+        where: {
+          "actor_id": data.me.id
+        }
+      }).then(function(response) {
+        var newlyApprovedPrayers = $.grep(response, function(currentElement, i){
+          return (currentElement.extra.approved && (!currentElement.extra.lastKnownApprovalStatus));
+        });
+        
+        $.each(newlyApprovedPrayers, function(index, value){
+          var notification = notifications.createNotification({
+            message: "Your prayer " + value.name + " has been approved!",
+            category: 'someCategory',
+            value: value.id,
+            type: 0
+          });
+        });
+        
+      });
+      
       //Getting notifications for approved prayers
       this.api('/550467c3528154b44e0011c0/conversations', 'get', {
         where: {
