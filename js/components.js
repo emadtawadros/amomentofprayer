@@ -84,7 +84,7 @@ Hull.component('mynotifications', {
         });
         
         var newlyPrayedForPrayers = $.grep(response, function(currentElement, i){
-          return currentElement.messages_count_unread >0;
+          return currentElement.messages_count > currentElement.extra.lastKnownPrayersNumber;
         });
         
         $.each(newlyApprovedPrayers, function(index, value){
@@ -98,7 +98,7 @@ Hull.component('mynotifications', {
         
         $.each(newlyPrayedForPrayers, function(index, value){
           var notification = notifications.createNotification({
-            message: "Your prayer " + value.name + " has been prayed for " + value.messages_count_unread + " times since your last login!",
+            message: "Your prayer " + value.name + " has been prayed for " + (value.messages_count - value.extra.lastKnownPrayersNumber) + " times since your last login!",
             category: 'someCategory',
             value: value.id,
             type: 1
