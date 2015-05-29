@@ -52,6 +52,7 @@ Hull.component('mynotifications', {
   beforeRender: function(data, errors) {
   },
   afterRender: function(data) {
+    var component = this;
     if(this.options.firstTime) {
       var notifications = new $.ttwNotificationMenu({
         notificationList:{
@@ -65,6 +66,31 @@ Hull.component('mynotifications', {
           $.each(notifications['someCategory']['unread'], function (index, value) {
             value.markRead();
             menuItems['someCategory'].updateBubble();
+            
+            //update the prayer itself with the new data
+            switch(value.settings.type) {
+              case 0: //newly approved prayers
+                component.api(value.settings.value, 'put', {
+                  "extra": {
+                    "lastKnownApprovalStatus": true
+                  }
+                }); 
+                break;
+              case 1: //newly prayed for prayers
+                component.api(value.settings.value, 'put', {
+                  "extra": {
+                    "lastKnownPrayersNumber": value.settings.currentPrayedTimes
+                  }
+                });
+                break;
+            }
+          });
+          
+          //Updating the read notifications in the user object
+          component.api(Hull.currentUser().id, 'put', {
+            'extra': {
+              'readNotifications': notifications
+            }
           });
         }
       }); 
@@ -92,7 +118,8 @@ Hull.component('mynotifications', {
             message: "Your prayer " + value.name + " has been prayed for " + (value.messages_count - value.extra.lastKnownPrayersNumber) + " times since your last login!",
             category: 'someCategory',
             value: value.id,
-            type: 1
+            type: 1,
+            currentPrayedTimes: value.messages_count
           });
         });
         
@@ -104,6 +131,11 @@ Hull.component('mynotifications', {
             type: 0
           });
         });
+      });
+      
+      //getting the user's read notifications
+      $.each(Hull.currentUser().extra.readNotifications, function(index, value){
+        notifications.createNotification(value);
       });
       
       this.options.firstTime = false;
