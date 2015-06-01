@@ -293,11 +293,25 @@ Hull.component('prayershub', {
     startPraying: function() {
       var component = this;
       this.$el.find('#startPraying').fadeOut(500, function() {
-        component.$el.find('#counter').fadeIn(500, function (){
-          //decrement counter here
-        });
+        component.countdown(component);
       });
     }
+  },
+  countdown: function (component) {
+    var counterDiv = component.$el.find('#counter');
+    if(counterDiv.is(":visible")) {
+      counterDiv.fadeOut(500, function (){
+        counterDiv.text(counterDiv.text() - 1);
+        component.countdown(component);
+      });
+    } else {
+      counterDiv.fadeIn(500, function (){
+        setTimeoue(function() {
+          component.countdown(component);
+        }, 1000);
+      });
+    }
+
   },
   rotatePrayers: function (component) {
     var currentActiveDiv = component.$el.find('[data-isActive="true"]');
