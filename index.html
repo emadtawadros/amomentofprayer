@@ -86,11 +86,13 @@ Hull.init({
 </script>
 
  <script type='text/handlebars' data-hull-template='submitprayerform/submitprayerform'>
-    <h1>Submit a new prayer</h1>
-    <input type="text" placeholder="Prayer Title" id="prayerTitle"></input>
-    <input type="text" placeholder="Pray for?" id="prayerOwner"></input>
-    <textarea id="prayerText" placeholder="Prayer Text"></textarea>
-    <button type="button" id="submitPrayer" data-hull-action="submitprayer">Submit</button>
+    <button type="button" id="enableSubmitForm" data-hull-action="enableSubmitForm">Submit a new prayer</button>
+    <div id="submitPrayerForm" style="display:none;">
+	    <input type="text" placeholder="Prayer Title" id="prayerTitle"></input>
+	    <input type="text" placeholder="Pray for?" id="prayerOwner"></input>
+	    <textarea id="prayerText" placeholder="Prayer Text"></textarea>
+	    <button type="button" id="submitPrayer" data-hull-action="submitprayer">Submit</button>
+    </div>
 </script>
 
  <script type='text/handlebars' data-hull-template='unapprovedprayers/unapprovedprayers'>
