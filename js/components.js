@@ -148,6 +148,7 @@ Hull.component('submitprayerform', {
   actions: {
     enableSubmitForm: function() {
       var component = this;
+      this.$el.find('#submitPrayer').prop('disabled', false);
       this.$el.find('#enableSubmitForm').fadeOut(500, function(){
         component.$el.find('#submitPrayerForm').fadeIn(500);
       });
