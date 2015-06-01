@@ -305,16 +305,16 @@ Hull.component('prayershub', {
       introductionDiv.fadeOut(500, function (){
         counterDiv.text(counterDiv.text() - 1);
         switch(counterDiv.text()) {
-          case 4:
+          case "4":
             introductionDiv.text("You're about to read real prayers of real people, and they're counting on you to pray for them");
             break;
-          case 3:
+          case "3":
             introductionDiv.text("Send every prayer owner your love, good intentions and good energy, hoping that what they pray for comes true");
             break;
-          case 2:
+          case "2":
             introductionDiv.text("And remember, what goes around comes around!");
             break;
-          case 1:
+          case "1":
             introductionDiv.text("Here we go!");
             break;
           default:
