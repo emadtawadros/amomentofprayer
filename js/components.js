@@ -146,6 +146,12 @@ Hull.component('mynotifications', {
 Hull.component('submitprayerform', {
   templates: ['submitprayerform'],
   actions: {
+    enableSubmitForm: function() {
+      var component = this;
+      this.$el.find('#enableSubmitForm').fadeOut(500, function(){
+        component.$el.find('#submitPrayerForm').fadeIn(500);
+      });
+    },
     submitprayer: function(){
         var component = this;
         
@@ -167,6 +173,9 @@ Hull.component('submitprayerform', {
             }
           }).then(function(response) {
             console.log(response);
+            component.$el.find('#submitPrayerForm').fadeOut(500, function(){
+              component.$el.find('#enableSubmitForm').fadeIn(500);
+            });
           });
         }
     }
