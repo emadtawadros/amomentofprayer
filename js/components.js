@@ -232,6 +232,7 @@ Hull.component('prayershub', {
     this.options.page = 1;
     this.options.currentPrayerIndex = 0;
     this.options.nextPrayerIndex = 1;
+    this.options.prayingInProgress = false;
   },
   beforeRender: function(data, errors) {
     this.options.data = data;
@@ -244,50 +245,44 @@ Hull.component('prayershub', {
     this.options.fetchedPrayersLength = data.prayers.data.length;
   },
   afterRender: function(data) {
-   // if(data.prayers.data.length == 0) {
-      //this.refresh()
-   // } else {
       var component = this;
-    
-      var currentPrayer = this.$el.find('[data-isActive="true"]');
-      currentPrayer.fadeOut(500, function(){
-        //Here, next prayer would be the one just faded out, make a call to add a message to it
-        component.api(component.options.nextPrayer.id+'/messages', 'post',{
-          "body": "Prayed"
-        }).then(function(response) {
-          console.log(response);
-        });
+      if(component.options.prayingInProgress) {
+        var currentPrayer = this.$el.find('[data-isActive="true"]');
+        currentPrayer.fadeOut(500, function(){
+          //Here, next prayer would be the one just faded out, make a call to add a message to it
+          component.api(component.options.nextPrayer.id+'/messages', 'post',{
+            "body": "Prayed"
+          }).then(function(response) {
+            console.log(response);
+          });
       
-        if(component.options.currentPrayer) {
-          currentPrayer.find('#prayerText').text(component.options.currentPrayer.description);
-          currentPrayer.find('#prayerOwner').text(component.options.currentPrayer.extra.owner);
-          currentPrayer.find('#prayerID').text(component.options.currentPrayer.id);
-
-        }
-        currentPrayer.fadeIn(500, function(){
-          setTimeout(function(){
-            if(component.options.fetchedPrayersLength >= 2)
-            {
-              var nextPrayer = component.$el.find('[data-isActive="false"]');
-              if(component.options.nextPrayer)
-              {
-                nextPrayer.find('#prayerText').text(component.options.nextPrayer.description);
-                nextPrayer.find('#prayerOwner').text(component.options.nextPrayer.extra.owner);
-                nextPrayer.find('#prayerID').text(component.options.nextPrayer.id);
-
-              }
-            }
-            
-            if(component.options.nextPrayerIndex != 0) {
-              component.rotatePrayers(component);
-            }
-          }, prayerFlipTime);
+          if(component.options.currentPrayer) {
+            currentPrayer.find('#prayerText').text(component.options.currentPrayer.description);
+            currentPrayer.find('#prayerOwner').text(component.options.currentPrayer.extra.owner);
+            currentPrayer.find('#prayerID').text(component.options.currentPrayer.id);
   
+          }
+          currentPrayer.fadeIn(500, function(){
+            setTimeout(function(){
+              if(component.options.fetchedPrayersLength >= 2)
+              {
+                var nextPrayer = component.$el.find('[data-isActive="false"]');
+                if(component.options.nextPrayer)
+                {
+                  nextPrayer.find('#prayerText').text(component.options.nextPrayer.description);
+                  nextPrayer.find('#prayerOwner').text(component.options.nextPrayer.extra.owner);
+                  nextPrayer.find('#prayerID').text(component.options.nextPrayer.id);
+  
+                }
+              }
+              
+              if(component.options.nextPrayerIndex != 0) {
+                component.rotatePrayers(component);
+              }
+            }, prayerFlipTime);
+          });
         });
-      });
-    //}
-
-
+      }
   },
   actions: {
     startPraying: function() {
@@ -318,7 +313,8 @@ Hull.component('prayershub', {
             introductionDiv.text("Here we go!");
             break;
           default:
-            console.log("nothing");
+            component.options.prayingInProgress = true;
+            component.render();
             break;
         }
         component.countdown(component);
