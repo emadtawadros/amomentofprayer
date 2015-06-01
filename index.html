@@ -114,6 +114,8 @@ Hull.init({
 </script>
 
 <script type='text/handlebars' data-hull-template='prayershub/prayershub'>
+<button type="button" id="startPraying" data-hull-action="startPraying">Start Prayer Session</button>
+<div id="counter"></div>
 <div data-isActive="true">
     <p>Pray for</p>
     <div id="prayerOwner"></div>
@@ -137,6 +139,7 @@ Hull.init({
     <div id="quoteText"></div>
     <div id="quoteAuthor"></div>
 </div>
+<button type="button" id="endPraying" data-hull-action="endPraying">End Session</button>
 </script>
 
 <script type='text/handlebars' data-hull-template='main/main'>
