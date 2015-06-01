@@ -114,28 +114,29 @@ Hull.init({
 </script>
 
 <script type='text/handlebars' data-hull-template='prayershub/prayershub'>
-	{{#if options.prayingInProgress}}
-		<div data-isActive="true">
-		    <p>Pray for</p>
-		    <div id="prayerOwner"></div>
-		    <div id="prayerText"></div>
-		    <div id="prayerID" style="display:none;"></div>
-		</div>
-		<div data-isActive="false" style="display:none;">
-		    <p>Pray for</p>
-		    <div id="prayerOwner"></div>
-		    <div id="prayerText"></div>
-		    <div id="prayerID" style="display:none;"></div>
-		</div>
-		<button type="button" id="endPraying" data-hull-action="endPraying">End Session</button>
-	{{else}}
-		<button type="button" id="startPraying" data-hull-action="startPraying">Start Prayer Session</button>
-		<div id="introductionText" style="display:none;">Clear your mind, take a deep breath, and think happy thoughts</div>
-		<div id="counter" style="display:none;">5</div>
-	{{/if}}
 	{{#if options.sessionEnding}}
 		<div id="sessionEndingText" style="display:none;">You just helped somebody's prayers come true!</div>
 		<div id="sessionEndingCounter" style="display:none;">2</div>
+	{{else}}
+		{{#if options.prayingInProgress}}
+			<div data-isActive="true">
+			    <p>Pray for</p>
+			    <div id="prayerOwner"></div>
+			    <div id="prayerText"></div>
+			    <div id="prayerID" style="display:none;"></div>
+			</div>
+			<div data-isActive="false" style="display:none;">
+			    <p>Pray for</p>
+			    <div id="prayerOwner"></div>
+			    <div id="prayerText"></div>
+			    <div id="prayerID" style="display:none;"></div>
+			</div>
+			<button type="button" id="endPraying" data-hull-action="endPraying">End Session</button>
+		{{else}}
+			<button type="button" id="startPraying" data-hull-action="startPraying">Start Prayer Session</button>
+			<div id="introductionText" style="display:none;">Clear your mind, take a deep breath, and think happy thoughts</div>
+			<div id="counter" style="display:none;">5</div>
+		{{/if}}
 	{{/if}}
 </script>
 
