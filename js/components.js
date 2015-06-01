@@ -175,6 +175,16 @@ Hull.component('submitprayerform', {
             }
           }).then(function(response) {
             console.log(response);
+            var n = noty({
+              text: 'NOTY - a jquery notification library!',
+              animation: {
+                open: 'animated bounceInLeft', // Animate.css class names
+                close: 'animated bounceOutLeft', // Animate.css class names
+                easing: 'swing', // unavailable - no need
+                speed: 500 // unavailable - no need
+                }
+            });
+            
             component.$el.find('#submitPrayerForm').fadeOut(500, function(){
               component.$el.find('#enableSubmitForm').fadeIn(500);
             });
