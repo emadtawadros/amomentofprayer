@@ -290,6 +290,14 @@ Hull.component('prayershub', {
 
   },
   actions: {
+    startPraying: function() {
+      var component = this;
+      this.$el.find('#startPraying').fadeOut(500, function() {
+        component.$el.find('#counter').fadeIn(500, function (){
+          //decrement counter here
+        });
+      });
+    }
   },
   rotatePrayers: function (component) {
     var currentActiveDiv = component.$el.find('[data-isActive="true"]');
