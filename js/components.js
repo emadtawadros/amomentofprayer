@@ -327,7 +327,7 @@ Hull.component('prayershub', {
       introductionDiv.fadeIn(500, function (){
         setTimeout(function() {
           component.countdown(component);
-        }, 1000);
+        }, 3000);
       });
     }
 
