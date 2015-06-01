@@ -233,6 +233,7 @@ Hull.component('prayershub', {
     this.options.currentPrayerIndex = 0;
     this.options.nextPrayerIndex = 1;
     this.options.prayingInProgress = false;
+    this.options.sessionEnding = false;
   },
   beforeRender: function(data, errors) {
     this.options.data = data;
@@ -246,6 +247,24 @@ Hull.component('prayershub', {
   },
   afterRender: function(data) {
       var component = this;
+      if(component.options.sessionEnding) {
+        var sessionEndingTextDiv = component.$el.find('#sessionEndingText');
+        sessionEndingTextDiv.fadeIn(500, function() {
+          setTimeout(function() {
+            sessionEndingTextDiv.fadeOut(500, function() {
+              sessionEndingTextDiv.text("We wish you everything that's good in the world!");
+              sessionEndingTextDiv.fadeIn(500, function() {
+                setTimeout(function(){
+                  sessionEndingTextDiv.fadeOut(500, function(){
+                    component.sessionEnding = false;
+                    component.render();
+                  });
+                }, 3000);
+              });
+            });
+          }, 3000);
+        });
+      }
       if(component.options.prayingInProgress) {
         var currentPrayer = this.$el.find('[data-isActive="true"]');
         currentPrayer.fadeOut(500, function(){
@@ -327,6 +346,11 @@ Hull.component('prayershub', {
       });
     }
 
+  },
+  endPraying: function() {
+    this.options.sessionEnding = true;
+    this.options.prayingInProgress = false;
+    this.render();
   },
   rotatePrayers: function (component) {
     var currentActiveDiv = component.$el.find('[data-isActive="true"]');
