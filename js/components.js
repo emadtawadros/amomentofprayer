@@ -161,6 +161,7 @@ Hull.component('submitprayerform', {
 
         if(prayerTitle && prayerOwner && prayerText)
         {
+          component.$el.find('#submitPrayer').prop('disabled', true);
           component.api('/550467c3528154b44e0011c0/conversations', 'post',{
             "public": "true",
             "name": prayerTitle,
