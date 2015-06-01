@@ -299,13 +299,32 @@ Hull.component('prayershub', {
   },
   countdown: function (component) {
     var counterDiv = component.$el.find('#counter');
-    if(counterDiv.is(":visible")) {
-      counterDiv.fadeOut(500, function (){
+    var introductionDiv = component.$el.find('#introductionText');
+    
+    if(introductionDiv.is(":visible")) {
+      introductionDiv.fadeOut(500, function (){
         counterDiv.text(counterDiv.text() - 1);
+        switch(counterDiv.text()) {
+          case 4:
+            introductionDiv.text("You're about to read real prayers of real people, and they're counting on you to pray for them");
+            break;
+          case 3:
+            introductionDiv.text("Send every prayer owner your love, good intentions and good energy, hoping that what they pray for comes true");
+            break;
+          case 2:
+            introductionDiv.text("And remember, what goes around comes around!");
+            break;
+          case 1:
+            introductionDiv.text("Here we go!");
+            break;
+          default:
+            console.log("nothing");
+            break;
+        }
         component.countdown(component);
       });
     } else {
-      counterDiv.fadeIn(500, function (){
+      introductionDiv.fadeIn(500, function (){
         setTimeout(function() {
           component.countdown(component);
         }, 1000);
