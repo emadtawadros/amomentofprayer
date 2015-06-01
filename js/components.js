@@ -134,7 +134,7 @@ Hull.component('mynotifications', {
       });
       
       //getting the user's read notifications
-      $.each(Hull.currentUser().extra.readNotifications, function(index, value){
+      $.each(Hull.currentUser().extra.readNotifications.someCategory, function(index, value){
         notifications.createNotification(value.settings);
       });
       
