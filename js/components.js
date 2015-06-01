@@ -309,6 +309,11 @@ Hull.component('prayershub', {
       this.$el.find('#startPraying').fadeOut(500, function() {
         component.countdown(component);
       });
+    },
+    endPraying: function() {
+      this.options.sessionEnding = true;
+      this.options.prayingInProgress = false;
+      this.render();
     }
   },
   countdown: function (component) {
@@ -346,11 +351,6 @@ Hull.component('prayershub', {
       });
     }
 
-  },
-  endPraying: function() {
-    this.options.sessionEnding = true;
-    this.options.prayingInProgress = false;
-    this.render();
   },
   rotatePrayers: function (component) {
     var currentActiveDiv = component.$el.find('[data-isActive="true"]');
