@@ -256,7 +256,7 @@ Hull.component('prayershub', {
               sessionEndingTextDiv.fadeIn(500, function() {
                 setTimeout(function(){
                   sessionEndingTextDiv.fadeOut(500, function(){
-                    component.sessionEnding = false;
+                    component.options.sessionEnding = false;
                     component.render();
                   });
                 }, 3000);
