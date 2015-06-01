@@ -89,7 +89,7 @@ Hull.component('mynotifications', {
           //Updating the read notifications in the user object
           component.api(Hull.currentUser().id, 'put', {
             'extra': {
-              'readNotifications': notifications
+              'readNotifications': notifications.someCategory.read
             }
           });
         }
@@ -135,7 +135,7 @@ Hull.component('mynotifications', {
       
       //getting the user's read notifications
       $.each(Hull.currentUser().extra.readNotifications, function(index, value){
-        notifications.createNotification(value);
+        notifications.createNotification(value.settings);
       });
       
       this.options.firstTime = false;
