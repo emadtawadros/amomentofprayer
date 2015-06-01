@@ -133,6 +133,10 @@ Hull.init({
 		<div id="introductionText" style="display:none;">Clear your mind, take a deep breath, and think happy thoughts</div>
 		<div id="counter" style="display:none;">5</div>
 	{{/if}}
+	{{#if options.sessionEnding}}
+		<div id="sessionEndingText" style="display:none;">You just helped somebody's prayers come true!</div>
+		<div id="sessionEndingCounter" style="display:none;">2</div>
+	{{/if}}
 </script>
 
 <script type='text/handlebars' data-hull-template='quotes/quotes'>
