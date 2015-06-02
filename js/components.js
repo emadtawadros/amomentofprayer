@@ -622,6 +622,22 @@ Hull.component('main', {
         this.$el.find('#missionText').fadeIn(500);
       }
       this.options.missionVisible = !(this.options.missionVisible);
+    },
+    toggleContactText: function() {
+      if(this.options.contactVisible) {
+        this.$el.find('#contactText').fadeOut(500);
+      } else {
+        this.$el.find('#contactText').fadeIn(500);
+      }
+      this.options.contactVisible = !(this.options.contactVisible);
+    },
+    toggleSupportText: function() {
+      if(this.options.supportVisible) {
+        this.$el.find('#supportText').fadeOut(500);
+      } else {
+        this.$el.find('#supportText').fadeIn(500);
+      }
+      this.options.supportVisible = !(this.options.supportVisible);
     }
   }
 });
