@@ -605,9 +605,23 @@ Hull.component('main', {
     
   Backbone.history.start();
   //router.navigate('/main');
+  
+  this.options.missionVisible = false;
+  this.options.contactVisible = false;
+  this.options.supportVisible = false;
   },
   beforeRender: function(data) {
     data.currentView = this.currentView;
     return data;
+  },
+  actions: {
+    toggleMissionText: function() {
+      if(this.options.missionVisible) {
+        this.$el.find('#missionText').fadeOut(500);
+      } else {
+        this.$el.find('#missionText').fadeIn(500);
+      }
+      this.options.missionVisible = !(this.options.missionVisible);
+    }
   }
 });
