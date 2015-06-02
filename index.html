@@ -163,23 +163,25 @@ Hull.init({
 </script>
 
 <script type='text/handlebars' data-hull-template='main/main'>
+	<a>Our Mission</a>
+	<a>Contact Us</a>
+	<a>Support Us</a>
+
 	{{#if isAdmin}}
-        <div data-hull-component="createentityform"></div>
-        <div data-hull-component="createquoteform"></div>
-        <div data-hull-component="unapprovedprayers"></div>
-    {{/if}}
-    </p></p>
-    {{#if loggedIn}}
-        <div data-hull-component="mynotifications"></div>
-        <div data-hull-component="submitprayerform"></div>
-        <div data-hull-component="prayershub"></div>
-    {{/if}}
-    </p></p>
-    <div data-hull-component="quotes"></div>
-    </p></p>
-
-
-    <div data-hull-component="login/profile@hull" data-hull-provider="facebook,twitter"></div>
+	        <div data-hull-component="createentityform"></div>
+	        <div data-hull-component="createquoteform"></div>
+	        <div data-hull-component="unapprovedprayers"></div>
+    	{{/if}}
+	</p></p>
+	{{#if loggedIn}}
+		<div data-hull-component="mynotifications"></div>
+	        <div data-hull-component="submitprayerform"></div>
+	        <div data-hull-component="prayershub"></div>
+	{{/if}}
+    	</p></p>
+    	<div data-hull-component="quotes"></div>
+    	</p></p>
+    	<div data-hull-component="login/profile@hull" data-hull-provider="facebook,twitter"></div>
 </script>
 
 <div data-hull-component="main"></div>
