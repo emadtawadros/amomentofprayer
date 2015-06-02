@@ -169,8 +169,17 @@ Hull.init({
 	<p>We believe that praying is a universal phenomenon. It's not bound by religion, race, age, location. It's one of the greatest, most beautiful mysteries of human nature. And to be able to particpate in this unifying act is an amazing experience, it's humbling and it's a privlige.</p>
 	<p>As humans to humans, let's all pray for each other, and witness ourselves impacting each other's lives, through the power of prayer</p>
 	</div>
-	<a>Contact Us</a>
-	<a>Support Us</a>
+	<a data-hull-action="toggleContactText">Contact Us</a>
+	<div id="contactText" style="display:none;">
+	<p>Got suggestions, questions or feedback? Feel free to contact us at contact@amomentofprayer.com</p>
+	<p>We would also love to hear your success stories on how your life was impacted by the power of prayer through our website!<p>
+	</div>
+	<a data-hull-action="toggleSupportText">Support Us</a>
+	<div id="supportText" style="display:none;">
+	<p>If you believe in our message, and would like to spread the word on the power of prayer, feel free to share our website to your friends on social networks using the buttons below</p>
+	<p>Also, building and maintaing this website requires time and money. So if you're feeling generous and wanted to support our cause, you can donate using the button below</p>
+	<p>Continue changing the world!</p>
+	</div
 
 	{{#if isAdmin}}
 	        <div data-hull-component="createentityform"></div>
