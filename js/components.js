@@ -151,7 +151,7 @@ Hull.component('submitprayerform', {
       this.$el.find('#submitPrayer').prop('disabled', false);
       this.$el.find('#enableSubmitForm').fadeOut(500, function(){
         component.$el.find('#submitPrayerForm').fadeIn(500, function(){
-          //$('.tooltip').tooltipster();
+          component.$el.find('#prayerOwnerTip').tooltipster();
         });
       });
     },
