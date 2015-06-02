@@ -155,6 +155,12 @@ Hull.component('submitprayerform', {
         });
       });
     },
+    cancelPrayer: function() {
+      var component = this;
+      this.$el.find('#submitPrayerForm').fadeOut(500, function(){
+        component.$el.find('#enableSubmitForm').fadeIn(500);
+      });
+    },
     submitprayer: function(){
         var component = this;
         
