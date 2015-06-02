@@ -177,10 +177,10 @@ Hull.component('submitprayerform', {
             console.log(response);
             var n = noty({
               layout: 'top',
-              theme: 'defaultTheme', // or 'relax'
-              type: 'alert',
-              text: '', // can be html or string
-              dismissQueue: true, // If you want to use queue feature set this true
+              theme: 'relax', // or 'defaultTheme'
+              type: 'success',
+              text: "Your prayer hass successfully been submited for approval. Don't worry, we only check for spam and inappropriate material. If everything looks good, it'll be approved in no time!", // can be html or string
+              dismissQueue: false, // If you want to use queue feature set this true
               template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
               animation: {
                   open: {height: 'toggle'}, // or Animate.css class names like: 'animated bounceInLeft'
