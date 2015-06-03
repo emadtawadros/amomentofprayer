@@ -151,8 +151,20 @@ Hull.component('submitprayerform', {
       this.$el.find('#submitPrayer').prop('disabled', false);
       this.$el.find('#enableSubmitForm').fadeOut(500, function(){
         component.$el.find('#submitPrayerForm').fadeIn(500, function(){
-          component.$el.find('#prayerOwnerTip').tooltipster();
-          component.$el.find('#prayerTextTip').tooltipster();
+          component.$el.find('#prayerOwnerTip').tooltipster({
+            animation: 'fade',
+            delay: 200,
+            theme: 'tooltipster-default',
+            touchDevices: true,
+            trigger: 'hover'
+          });
+          component.$el.find('#prayerTextTip').tooltipster({
+            animation: 'fade',
+            delay: 200,
+            theme: 'tooltipster-default',
+            touchDevices: true,
+            trigger: 'hover'
+          });
         });
       });
     },
@@ -197,7 +209,7 @@ Hull.component('submitprayerform', {
                   easing: 'swing',
                   speed: 500 // opening & closing animation speed
               },
-              timeout: false, // delay for closing event. Set false for sticky notifications
+              timeout: 300, // delay for closing event. Set false for sticky notifications
               force: false, // adds notification to the beginning of queue when set to true
               modal: false,
               maxVisible: 5, // you can set max visible notification for dismissQueue true option,
@@ -231,7 +243,7 @@ Hull.component('submitprayerform', {
                   easing: 'swing',
                   speed: 500 // opening & closing animation speed
               },
-              timeout: false, // delay for closing event. Set false for sticky notifications
+              timeout: 300, // delay for closing event. Set false for sticky notifications
               force: false, // adds notification to the beginning of queue when set to true
               modal: false,
               maxVisible: 5, // you can set max visible notification for dismissQueue true option,
