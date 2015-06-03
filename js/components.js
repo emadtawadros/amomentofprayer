@@ -496,7 +496,7 @@ Hull.component('prayershub', {
           currentInactiveDiv.attr("data-isActive", "true");
           
           setTimeout(function(){
-            if(flipping)
+            if(flipping && (!(component.options.prayingPaused)))
             {
               flipping = false;
               component.render();
