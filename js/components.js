@@ -324,6 +324,7 @@ Hull.component('prayershub', {
     this.options.nextPrayerIndex = 1;
     this.options.prayingInProgress = false;
     this.options.sessionEnding = false;
+    this.options.prayingPaused = false;
   },
   beforeRender: function(data, errors) {
     this.options.data = data;
@@ -404,6 +405,16 @@ Hull.component('prayershub', {
       this.options.sessionEnding = true;
       this.options.prayingInProgress = false;
       this.render();
+    },
+    pausePraying: function() {
+      if(this.options.prayingPaused) {
+        this.$el.find('#pausePraying').html('Pause');
+        this.options.prayingPaused = false;
+        this.rotatePrayers(this);
+      } else {
+        this.options.prayingPaused = true;
+        this.$el.find('#pausePraying').html('Resume');
+      }
     }
   },
   countdown: function (component) {
@@ -443,59 +454,60 @@ Hull.component('prayershub', {
 
   },
   rotatePrayers: function (component) {
-    var currentActiveDiv = component.$el.find('[data-isActive="true"]');
-    var currentInactiveDiv = component.$el.find('[data-isActive="false"]');
+    if(!(component.options.prayingPaused) {
+      var currentActiveDiv = component.$el.find('[data-isActive="true"]');
+      var currentInactiveDiv = component.$el.find('[data-isActive="false"]');
     
-    currentActiveDiv.fadeOut(500, function() {
-      //Here, current prayer is the one that just faded out, make a call to add a message to it
-      component.api(component.options.currentPrayer.id+'/messages', 'post',{
-        "body": "Prayed"
-      }).then(function(response) {
-        console.log(response);
-      });
-
-      currentActiveDiv.attr("data-isActive", "false");
-      //Setting the next prayer
-      component.options.nextPrayerIndex++;
-
-      var flipping = false; 
-      if(component.options.nextPrayerIndex >= component.options.fetchedPrayersLength) // we reached the end of the fetched prayer
-      {
-        flipping = true;
-        component.options.currentPrayerIndex = 0;
-        component.options.nextPrayerIndex = 1;
-        component.options.page++;
-        if(component.options.page > component.options.data.prayers.pagination.pages)
+      currentActiveDiv.fadeOut(500, function() {
+        //Here, current prayer is the one that just faded out, make a call to add a message to it
+        component.api(component.options.currentPrayer.id+'/messages', 'post',{
+          "body": "Prayed"
+        }).then(function(response) {
+          console.log(response);
+        });
+  
+        currentActiveDiv.attr("data-isActive", "false");
+        //Setting the next prayer
+        component.options.nextPrayerIndex++;
+  
+        var flipping = false; 
+        if(component.options.nextPrayerIndex >= component.options.fetchedPrayersLength) // we reached the end of the fetched prayer
         {
-          component.options.page = 1;
-        }
-      }
-      
-      if(component.options.fetchedPrayersLength >= 2 && !flipping)
-      {
-        component.options.nextPrayer = component.options.data.prayers.data[component.options.nextPrayerIndex];
-        currentActiveDiv.find('#prayerText').text(component.options.nextPrayer.description);
-        currentActiveDiv.find('#prayerOwner').text(component.options.nextPrayer.extra.owner);
-        currentActiveDiv.find('#prayerID').text(component.options.nextPrayer.id);
-
-      }
-
-
-      currentInactiveDiv.fadeIn(500, function() {
-        currentInactiveDiv.attr("data-isActive", "true");
-        
-        setTimeout(function(){
-          if(flipping)
+          flipping = true;
+          component.options.currentPrayerIndex = 0;
+          component.options.nextPrayerIndex = 1;
+          component.options.page++;
+          if(component.options.page > component.options.data.prayers.pagination.pages)
           {
-            flipping = false;
-            component.render();
+            component.options.page = 1;
           }
-          else {
-            component.rotatePrayers(component)
-          }
-        }, prayerFlipTime);
+        }
+        
+        if(component.options.fetchedPrayersLength >= 2 && !flipping)
+        {
+          component.options.nextPrayer = component.options.data.prayers.data[component.options.nextPrayerIndex];
+          currentActiveDiv.find('#prayerText').text(component.options.nextPrayer.description);
+          currentActiveDiv.find('#prayerOwner').text(component.options.nextPrayer.extra.owner);
+          currentActiveDiv.find('#prayerID').text(component.options.nextPrayer.id);
+        }
+  
+  
+        currentInactiveDiv.fadeIn(500, function() {
+          currentInactiveDiv.attr("data-isActive", "true");
+          
+          setTimeout(function(){
+            if(flipping)
+            {
+              flipping = false;
+              component.render();
+            }
+            else {
+              component.rotatePrayers(component)
+            }
+          }, prayerFlipTime);
+        });
       });
-    });
+    }
   }
 });
 
