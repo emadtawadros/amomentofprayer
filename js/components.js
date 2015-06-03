@@ -309,6 +309,7 @@ Hull.component('prayershub', {
        'wrapped': true,
        'page': this.options.page,
        'per_page': 2,
+       'order_by': 'extra.lastKnownPrayersNumber ASC',
        where: {
           'extra.approved': true,
            'actor_id': {
