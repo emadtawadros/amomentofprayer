@@ -356,7 +356,7 @@ Hull.component('prayershub', {
           }, 3000);
         });
       }
-      if(component.options.prayingInProgress) {
+      if(component.options.prayingInProgress && (!(component.options.prayingPaused))) {
         var currentPrayer = this.$el.find('[data-isActive="true"]');
         currentPrayer.fadeOut(500, function(){
           //Here, next prayer would be the one just faded out, make a call to add a message to it
