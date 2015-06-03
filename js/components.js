@@ -325,6 +325,7 @@ Hull.component('prayershub', {
     this.options.prayingInProgress = false;
     this.options.sessionEnding = false;
     this.options.prayingPaused = false;
+    this.options.flipping = false;
   },
   beforeRender: function(data, errors) {
     this.options.data = data;
@@ -454,7 +455,7 @@ Hull.component('prayershub', {
 
   },
   rotatePrayers: function (component) {
-    if(!(component.options.prayingPaused)) {
+    if(!(component.options.prayingPaused) && (!(component.options.flipping))) {
       var currentActiveDiv = component.$el.find('[data-isActive="true"]');
       var currentInactiveDiv = component.$el.find('[data-isActive="false"]');
     
@@ -496,10 +497,14 @@ Hull.component('prayershub', {
           currentInactiveDiv.attr("data-isActive", "true");
           
           setTimeout(function(){
-            if(flipping && (!(component.options.prayingPaused)))
+            if(flipping)
             {
               flipping = false;
-              component.render();
+              if(component.options.prayingPaused) {
+                component.options.flipping = true; //need a way to recognize that we were flipping before pausing and reusming
+              } else{
+                component.render();
+              }
             }
             else {
               component.rotatePrayers(component)
@@ -507,6 +512,10 @@ Hull.component('prayershub', {
           }, prayerFlipTime);
         });
       });
+    }
+    if(component.options.flipping && (!(component.options.prayingPaused))) { //This is to handle the case where we were flipping before pausing
+      component.options.flipping = false;
+      component.render();
     }
   }
 });
