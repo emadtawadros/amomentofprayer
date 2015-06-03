@@ -58,7 +58,7 @@ Hull.init({
          console.log(response);
      });
      
-     Hull.api('550467c3528154b44e0011c0/conversations', 'get').then(function(response) {
+     Hull.api('550467c3528154b44e0011c0/conversations', 'get', {order_by: "extra.lastKnownPrayersNumber"}).then(function(response) {
          console.log("Prayers");
          console.log(response);
      });
