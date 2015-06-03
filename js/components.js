@@ -153,14 +153,14 @@ Hull.component('submitprayerform', {
         component.$el.find('#submitPrayerForm').fadeIn(500, function(){
           component.$el.find('#prayerOwnerTip').tooltipster({
             animation: 'fade',
-            delay: 200,
+            delay: 5000,
             theme: 'tooltipster-default',
             touchDevices: true,
             trigger: 'hover'
           });
           component.$el.find('#prayerTextTip').tooltipster({
             animation: 'fade',
-            delay: 200,
+            delay: 5000,
             theme: 'tooltipster-default',
             touchDevices: true,
             trigger: 'hover'
