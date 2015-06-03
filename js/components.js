@@ -454,7 +454,7 @@ Hull.component('prayershub', {
 
   },
   rotatePrayers: function (component) {
-    if(!(component.options.prayingPaused) {
+    if(!(component.options.prayingPaused)) {
       var currentActiveDiv = component.$el.find('[data-isActive="true"]');
       var currentInactiveDiv = component.$el.find('[data-isActive="false"]');
     
