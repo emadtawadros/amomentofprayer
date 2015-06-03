@@ -406,6 +406,7 @@ Hull.component('prayershub', {
     endPraying: function() {
       this.options.sessionEnding = true;
       this.options.prayingInProgress = false;
+      this.options.prayingPaused = false;
       this.render();
     },
     pausePraying: function() {
