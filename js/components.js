@@ -86,10 +86,15 @@ Hull.component('mynotifications', {
             }
           });
           
+          var mappedNotifications = $.map(notifications.someCategory.read, function(value, index) {
+            var originalSettings = value.settings;
+            originalSettings.read = true;
+            return originalSettings;
+          });
           //Updating the read notifications in the user object
           component.api(Hull.currentUser().id, 'put', {
             'extra': {
-              'readNotifications': notifications.someCategory.read
+              'readNotifications': mappedNotifications
             }
           });
         }
@@ -134,8 +139,8 @@ Hull.component('mynotifications', {
       });
       
       //getting the user's read notifications
-      $.each(Hull.currentUser().extra.readNotifications.someCategory.read, function(index, value){
-        notifications.createNotification(value.settings);
+      $.each(Hull.currentUser().extra.readNotifications, function(index, value){
+        notifications.createNotification(value);
       });
       
       this.options.firstTime = false;
