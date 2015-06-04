@@ -361,7 +361,7 @@
                         id: notification.id,
                         category:notification.category,
                         notification:notification
-                    }).appendTo($list);
+                    }).prependTo($list);
                 });
             }
             else {
