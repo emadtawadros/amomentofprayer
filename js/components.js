@@ -1,5 +1,6 @@
 Hull.component('createentityform', {
   templates: ['createentityform'],
+  refreshEvents: ['model.hull.me.change'],
   actions: {
     createentity: function(){
         var component = this;
@@ -24,6 +25,7 @@ Hull.component('createentityform', {
 
 Hull.component('createquoteform', {
   templates: ['createquoteform'],
+  refreshEvents: ['model.hull.me.change'],
   actions: {
     createquote: function(){
         var component = this;
@@ -46,6 +48,7 @@ Hull.component('createquoteform', {
 
 Hull.component('mynotifications', {
   templates: ['mynotifications'],
+  refreshEvents: ['model.hull.me.change'],
   initialize: function() {
     this.options.firstTime = true;
   },
@@ -150,6 +153,7 @@ Hull.component('mynotifications', {
 
 Hull.component('submitprayerform', {
   templates: ['submitprayerform'],
+  refreshEvents: ['model.hull.me.change'],
   actions: {
     enableSubmitForm: function() {
       var component = this;
@@ -270,6 +274,7 @@ Hull.component('submitprayerform', {
 
 Hull.component('unapprovedprayers', {
   templates: ['unapprovedprayers'],
+  refreshEvents: ['model.hull.me.change'],
   datasources: {
     unapprovedprayerslist: function() {
       return this.api('550467c3528154b44e0011c0/conversations', 'get', {
@@ -285,6 +290,7 @@ Hull.component('unapprovedprayers', {
 
 Hull.component('prayer', {
   templates: ['prayer'],
+  refreshEvents: ['model.hull.me.change'],
   datasources: {
     prayer: ':id'
   },
@@ -308,6 +314,7 @@ Hull.component('prayer', {
 
 Hull.component('prayershub', {
   templates: ['prayershub'],
+  refreshEvents: ['model.hull.me.change'],
   datasources: {
    prayers: function() {
      return this.api('550467c3528154b44e0011c0/conversations', 'get', {
@@ -529,6 +536,7 @@ Hull.component('prayershub', {
 
 Hull.component('quotes', {
   templates: ['quotes'],
+  refreshEvents: ['model.hull.me.change'],
   datasources: {
    quotes: function() {
      return this.api('5504676b91e0cb0be00014cd/conversations', 'get', {
@@ -630,6 +638,7 @@ Hull.component('quotes', {
 
 Hull.component('main', {
   templates: ['main', 'prayer'],
+  refreshEvents: ['model.hull.me.change'],
   initialize: function(){
     var myRouter = Backbone.Router.extend({
       routes: {
