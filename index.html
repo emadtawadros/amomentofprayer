@@ -1,0 +1,393 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>A Moment of Prayer</title>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <meta name="description" content="A Moment of Prayer, Send every prayer owner your love, good intentions and good energy, hoping that what they pray for comes true. And remember, what goes around comes around">
+    <meta name="keywords" content="prayer,feel,hope,love,good,intentions,energy,power,life,beleive">
+
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jquery.slick/1.5.0/slick.css"/>
+    <link rel="stylesheet" href="css/magnific-popup.css"> 
+    <link rel="stylesheet" href="css/moh.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <script src="bower_components/modernizr/modernizr.js"></script>
+  </head>
+  <body>
+
+  <div id="content_wrap">
+
+  <h1 class="hide">A moment of prayer</h1>
+
+
+<div class="notification"></div>
+
+  <div id="main_menu">
+    <ul>
+      <li class="active"><a class="home" href="#">Home</a></li>
+      <li><a href="#mission" data-effect="mfp-zoom-in">Mission</a></li>
+      <li><a href="#contact" data-effect="mfp-zoom-in">Contact Us</a></li>
+      <li><a href="#support" data-effect="mfp-zoom-in">Support Us</a></li>
+    </ul>
+
+
+    <div class="audio_controls show-for-small-only">
+      <div class="info">
+        <div class="icon"></div>
+        <div class="content">
+          <span>Now Playing</span><br>
+          <div class="title"><span>Artist</span> - Song</div>
+        </div>
+      </div>
+      <div class="volume">
+      </div>
+    </div>
+
+    <div class="fb-like show-for-small-only" data-share="true" data-layout="button_count" data-show-faces="false"> </div>
+
+  </div>
+
+  <script type='text/handlebars' data-hull-template='quotes/quotes'>
+    <div id="quotes">
+      {{#each quotes}}
+        <div>
+          <blockquote>{{name}}<cite>{{description}}</cite></blockquote>
+        </div>
+      {{/each}}
+    </div>
+  </script>
+
+
+
+<script type='text/handlebars' data-hull-template='mynotifications/mynotifications'>
+
+    <ul class="notification_tabs">
+      <li class="tab-title active">Unread</li>
+      <li class="tab-title">Read</li>
+    </ul>
+    <div class="notification_tabs_content">
+      <div class="content active" id="panel1">
+        <div class="unread"></div>
+      </div>
+      <div class="content" id="panel2">
+        <div class="read">
+          <ul class="n">
+          {{#each read}}
+            <div id="test-popup_{{@index}}" class="white-popup single_not mfp-hide">
+              {{description}}
+              <a href="#notifications" class="single_notification">Back</a>
+            </div>
+            <li><a href="#test-popup_{{@index}}" class="single_notification">{{message}} <span>{{date}}</span></a></li>
+          {{/each}}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+</script>
+
+
+  <script type='text/handlebars' data-hull-template='prayershub/prayershub'>
+  <div class="prayershub_wrap" style="display:none;">
+
+  <div id="prayerintro">
+    <div></div>
+      <div>
+        <div class="prayer_wrap">
+        <div class="prayer">Clear your mind, take a deep breath, and think happy thoughts</div>
+        </div>
+      </div>
+      <div>
+        <div class="prayer_wrap">
+        <div class="prayer">You're about to read real prayers of real people, and they're counting on you to pray for them</div>
+        </div>
+      </div>
+      <div>
+        <div class="prayer_wrap">
+        <div class="prayer">Send every prayer owner your love, good intentions and good energy, hoping that what they pray for comes true</div>
+        </div>
+      </div>
+      <div>
+        <div class="prayer_wrap">
+        <div class="prayer">And remember, what goes around comes around!</div>
+        </div>
+      </div>
+      <div>
+        <div class="prayer_wrap">
+        <div class="prayer">Here we go!</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="prayeroutro" style="display:none;">
+    <div></div>
+      <div>
+        <div class="prayer_wrap">
+        <div class="prayer">You just helped somebody's prayers come true!</div>
+        </div>
+      </div>
+      <div>
+        <div class="prayer_wrap">
+        <div class="prayer">We wish you everything that's good in the world!</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="prayershub" style="display:none;">
+      {{#each prayers}}
+        <div data-id={{id}}>
+          <div class="prayer_wrap">
+          <div class="owner">Pray for <span>{{extra.owner}}</span></div>
+          <div class="prayer">{{description}}</div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+    <div class="buttons">
+    <ul>
+      <li><a href="#" id="pause_session"><span class="pause"><img src="img/pause2.png" alt="prayer"></span><span class="play"><img src="img/play2.png" alt="prayer"></span></a></li>
+      <li><a href="#" id="end_session"><img src="img/end.png" alt="session">End Session</a></li>
+    </ul>
+    </div>
+  </div>
+  </script>
+
+  <!-- <div id="test-popup" class="white-popup mfp-with-anim mfp-hide">You may put any HTML here. This is dummy copy. It is not meant to be read. It has been placed here solely to demonstrate the look and feel of finished, typeset text. Only for show. He who searches for meaning here will be sorely disappointed.</div> -->
+
+
+    <div id="support" class="popup mfp-with-anim mfp-hide">
+      <h2>Support Us</h2>
+      <p>If you believe in our message, and would like to spread the word on the power of prayer, feel free to share our website to your friends on social networks using the buttons below</p>
+
+      <ul>
+        <li class="f"></li>
+        <li class="t"></li>
+        <li class="g"></li>
+        <li class="l"></li>
+      </ul>
+
+
+      <p>Also, building and maintaing this website requires time and money. So if you're feeling generous and wanted to support our cause, you can donate using the button below. Keep on changing the world!</p>
+      <div style="text-align: center;">
+      <a href="#" class="donate_button"><img src="img/dollar.png" alt="donate"> Donate Now</a>
+      </div>
+    </div>
+
+
+   <div id="contact" class="popup mfp-with-anim mfp-hide">
+      <h2>Contact Us</h2>
+      <h5>Got suggestions, questions or feedback?</h5>
+      <p>Feel free to contact us at <a href="mailto:contact@amomentofprayer.com">contact@amomentofprayer.com</a></p>
+
+      <p>We would also love to hear your success stories on how your life was impacted by the power of prayer through our website! We would share those sucess stories on the website (Anonymously) to encourage other prayers and as a proof that prayer works!</p>
+    </div>
+
+  <div id="mission" class="popup mfp-with-anim mfp-hide">
+    <h2>Our Mission</h2>
+      <p>We believe in the power of prayer. We believe that it's not just words or thoughts uttered in vein. Or that their sole purpose is just to make the praying person feel better about himself. No, we believe that prayers have actual tangible positive impact on both the lives of the praying and prayed for people. And collective prayer is one of the gratest, most noble and powerful things human nature is capable of. They can change lives and cause miracles. All great teachers throughout time have taught this. And we should listen. We believe in sending out love and good energy towards others. And that what goes around comes around. When you pray for someone else, not only you should feel good bercause you just made someone's life better, but you also just made your life better. Because the good you send out, comes back to you. And you will feel it.</p>
+
+      <p>We believe that praying is a universal phenomenon. It's not bound by religion, race, age, location. It's one of the greatest, most beautiful mysteries of human nature. And to be able to particpate in this unifying act is an amazing experience, it's humbling and it's a privlige.</p>
+
+      <p>As humans to humans, let's all pray for each other, and witness ourselves impacting each other's lives, through the power of prayer.</p>
+    </div>
+
+
+   <script type='text/handlebars' data-hull-template='profile/profile'>
+        {{#if loggedIn}}
+            <div id="profile_icon">
+            <span class="bubble"></span>
+            <div data-hull-component="login/profile@hull" data-hull-provider="facebook"></div>
+            <div class="name">
+            {{me.name}}
+            </div>
+            <div class="profile_menu">
+            <ul>
+            <li><a class="notifications" href="#notifications" data-effect="mfp-zoom-in">Notifications</a></li>
+            {{#if isAdmin}}
+            <li><a class="admin_button" href="#admin" data-effect="mfp-zoom-in">Admin</a></li>
+            {{/if}}
+            <li><a  data-hull-action="logout">Logout</a></li>
+            </ul>
+            </div>
+            </div>
+            <div class="white-popup mfp-with-anim mfp-hide" id="notifications">
+              <div data-hull-component="mynotifications"></div>
+            </div>
+          {{else}}
+            <div class="pause_quotes"></div>
+        {{/if}}
+    </script>
+
+    <script type='text/handlebars' data-hull-template='login/login'>
+
+      {{#if loggedIn}}
+          <div class="home_buttons">
+          <ul>
+            <li><a href="#" id="pause_quotes"><span class="pause"><img src="img/pause2.png" alt="prayer"></span><span class="play"><img src="img/play2.png" alt="prayer"></span></a></li>
+            <li><a href="#" id="submit_button"><img src="img/prayer.png" alt="prayer"> Submit New Prayer</a></li>
+            <li><a href="#" id="start_button"><img src="img/session.png" alt="session"> Start Prayer Session</a></li>
+          </ul>
+        </div>
+        {{else}}
+          <div id="facebook_login">
+          <div data-hull-component="login/profile@hull" data-hull-provider="facebook"></div>
+          </div>
+      {{/if}}
+    </script>
+
+    <script type='text/handlebars' data-hull-template='submitprayerform/submitprayerform'>
+      {{#if loggedIn}}
+        <div id="submitPrayerForm" style="display:none;">
+          <div class="loader"></div>
+          <div class="">
+
+            <div class="small-12 medium-6 columns">
+            <label>Prayer Title</label>
+            <div class="input_wrap">
+            <input type="text" id="prayerTitle"></input>
+            </div>
+            </div>
+
+            <div class="small-12 medium-6 columns">
+            <label>Pray for?</label>
+            <div class="input_wrap">
+            <input type="text" id="prayerOwner"></input>
+            <div class="info"> <a  data-effect="mfp-zoom-in" href="#pray_for_info"></a></div>
+            <div id="pray_for_info" class="white-popup mfp-with-anim submit_info mfp-hide">
+            This is the name that will show next to the prayer when other people see it. It can be anything. Users can not see the creator of each prayer.
+            </div>
+            </div>
+            </div>
+
+            <div class="small-12 columns text">
+            <label>Prayer Text</label>
+            <div class="input_wrap">
+            <textarea id="prayerText"></textarea>
+            <div class="info text"><a  data-effect="mfp-zoom-in" href="#pray_text_info"></a></div>
+            <div id="pray_text_info" class="white-popup mfp-with-anim submit_info mfp-hide">
+            This is the body of your prayer. You can pray for anything you want. Nothing is too big, too small, too strange or too stupid! But please avoid inappropriate material.
+            </div>
+            </div>
+            </div>
+
+            <div class="small-12 text-center columns">
+            <button type="button" id="submitPrayer" data-hull-action="submitprayer"><img src="img/tick.png" />Submit</button>
+            <button type="button" id="cancelPrayer"><img src="img/cross.png" /> Cancel</button>
+            </div>
+
+          </div>
+        </div>
+      {{/if}}
+    </script>
+
+    <script type='text/handlebars' data-hull-template='admin/admin'>
+    {{#if isAdmin}}
+      <div class="white-popup mfp-with-anim mfp-hide" id="admin">
+        <div data-hull-component="unapprovedprayers"></div>
+        <div data-hull-component="createquoteform"></div>
+      </div>
+    {{/if}}
+    </script>
+
+
+    <!-- ################## ADMIN #################### -->
+
+    <script type='text/handlebars' data-hull-template='createquoteform/createquoteform'>
+    <div class="createquoteform">
+    <h4>Add a new quote</h4>
+    <textarea id="newQuoteField" placeholder="Quote text"></textarea>
+    <input type="text" placeholder="Quote author" id="newQuoteAuthor"></input>
+    <button type="button" id="createQuote" data-hull-action="createquote">Create</button>
+    <div class="status"></div>
+    </div>
+    </script>
+
+    <script type='text/handlebars' data-hull-template='unapprovedprayers/unapprovedprayers'>
+    <div class="unapproved">
+    <h4>Unapproved Prayers</h4>
+    <ul>
+    {{#each unapprovedprayerslist}}
+        <li data-postID="{{id}}">
+        <h5>{{name}}</h5>
+        <div>
+        <p>pray for {{extra.owner}} </p>
+        <p>{{description}}</p>
+        <button type="button" id="approvePrayer">Approve</button>
+        <button type="button" id="deletePrayer">Delete</button>
+        </div>
+        </li>
+    {{/each}}
+    </ul>
+    </div>
+    </script>
+
+    
+    
+    <div id="main_content">
+
+    <div class="fb-like show-for-medium-up" data-share="true" data-layout="button_count" data-show-faces="false"> </div>
+
+    <div class="menu_toggle"><i class="icon-menu"></i><i class="icon-cancel"></i> Menu</div>
+
+    <div data-hull-component="profile"></div>
+      
+      <div id="center">
+      
+      <div id="logo">
+      <a href="#"><img src="img/logo.png" alt="A moment of hope"></a>
+      </div>
+
+
+      <div id="dynamic_content">
+        <div data-hull-component="quotes"></div>
+        <div data-hull-component="prayershub"></div>
+        <div data-hull-component="submitprayerform"></div>
+        <div data-hull-component="login"></div>
+    
+      </div>
+
+      </div>
+
+       <div data-hull-component="admin"></div>
+
+      <div id="bottom_bar">
+
+        <div class="audio_controls show-for-medium-up">
+          <div class="info">
+            <div class="icon"></div>
+            <div class="content">
+              <span>Now Playing</span><br>
+              <div class="title"><span>Artist</span> - Song</div>
+            </div>
+          </div>
+          <div class="volume">
+          </div>
+        </div>
+      </div>
+
+       <div class="close_menu"></div>  
+
+    </div>
+
+    </div>
+
+
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <!-- <script src="js/ttw-notification-menu.js"></script> -->
+    <script src="//documentcloud.github.io/underscore/underscore-min.js"></script>
+    <script src="//documentcloud.github.io/backbone/backbone-min.js"></script>
+    <script src="//d3f5pyioow99x0.cloudfront.net/0.8/hull.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/soundmanager2.js"></script>
+    <script src="js/jquery.sharrre.min.js"></script>
+    <script src="bower_components/foundation/js/foundation.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
+    <script src="js/app.js"></script>
+
+    <script src="js/mop.js"></script>
+  </body>
+</html>
