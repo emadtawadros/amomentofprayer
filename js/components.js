@@ -20,7 +20,7 @@ Hull.component('quotes', {
       fade: true,
       arrows: false,
       autoplay: true,
-      autoplaySpeed: 5000,
+      autoplaySpeed: 10000,
       infinite: true,
       pauseOnHover: false,
       speed: 0
