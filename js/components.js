@@ -20,7 +20,7 @@ Hull.component('quotes', {
       fade: true,
       arrows: false,
       autoplay: true,
-      autoplaySpeed: 5000,
+      autoplaySpeed: 8000,
       infinite: true,
       pauseOnHover: false,
       speed: 0
@@ -454,7 +454,7 @@ Hull.component('prayershub', {
       fade: true,
       arrows: false,
       autoplay: true,
-      autoplaySpeed: 5000,
+      autoplaySpeed: 10000,
       infinite: true,
       pauseOnHover: false,
       speed: 0
@@ -464,7 +464,7 @@ Hull.component('prayershub', {
       fade: true,
       arrows: false,
       autoplay: true,
-      autoplaySpeed: 3000,
+      autoplaySpeed: 5000,
       infinite: false,
       pauseOnHover: false,
       speed: 0
@@ -474,7 +474,7 @@ Hull.component('prayershub', {
       fade: true,
       arrows: false,
       autoplay: true,
-      autoplaySpeed: 3000,
+      autoplaySpeed: 5000,
       infinite: true,
       pauseOnHover: false,
       speed: 0
