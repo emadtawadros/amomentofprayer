@@ -23,7 +23,7 @@ Hull.component('quotes', {
       autoplaySpeed: 10000,
       infinite: true,
       pauseOnHover: false,
-      speed: 0
+      speed: 300
     });
 
     $(window).blur(function() {
