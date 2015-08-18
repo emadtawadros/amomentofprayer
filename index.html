@@ -207,6 +207,8 @@
             <li><a class="notifications" href="#notifications" data-effect="mfp-zoom-in">Notifications</a></li>
             {{#if isAdmin}}
             <li><a class="admin_button" href="#admin" data-effect="mfp-zoom-in">Admin</a></li>
+            <li><a class="admin_button" href="#allquotes" data-effect="mfp-zoom-in">Quotes</a></li>
+            <li><a class="admin_button" href="#allprayers" data-effect="mfp-zoom-in">Prayers</a></li>
             {{/if}}
             <li><a  data-hull-action="logout">Logout</a></li>
             </ul>
@@ -291,6 +293,36 @@
     {{/if}}
     </script>
 
+    <script type='text/handlebars' data-hull-template='allquotes/allquotes'>
+    {{#if isAdmin}}
+      <div class="white-popup mfp-with-anim mfp-hide" id="allquotes">
+        <div id="allquotesdiv">
+        {{#each quotes}}
+          <div>
+            <blockquote>{{name}}<cite>{{description}}</cite></blockquote>
+            <button data-id="{{id}}" type="button" id="deleteQuote" data-hull-action="deletequote">Delete</button>
+          </div>
+        {{/each}}
+      </div>
+      </div>
+    {{/if}}
+    </script>
+
+    <script type='text/handlebars' data-hull-template='allprayers/allprayers'>
+    {{#if isAdmin}}
+      <div class="white-popup mfp-with-anim mfp-hide" id="allprayers">
+        <div id="allprayersdiv">
+        {{#each prayers}}
+          <div>
+            <blockquote>{{description}}<cite>For {{extra.owner}}</cite></blockquote>
+            <button data-id="{{id}}" type="button" id="deletePrayer2">Delete</button>
+          </div>
+        {{/each}}
+      </div>
+      </div>
+    {{/if}}
+    </script>
+
 
     <!-- ################## ADMIN #################### -->
 
@@ -351,6 +383,8 @@
       </div>
 
        <div data-hull-component="admin"></div>
+       <div data-hull-component="allquotes"></div>
+       <div data-hull-component="allprayers"></div>
 
       <div id="bottom_bar">
 

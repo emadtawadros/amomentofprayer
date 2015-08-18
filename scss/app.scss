@@ -309,8 +309,8 @@ body {
 			blockquote {
 				&.animate {
 					opacity: 0;
-					-webkit-animation: fadeout 5s;
-					animation: fadeout 5s;
+					-webkit-animation: fadeout 10s;
+					animation: fadeout 10s;
 				}
 			}
 		}
@@ -1063,8 +1063,8 @@ body.menu_opened {
 		.prayer_wrap {
 			&.animate {
 				opacity: 0;
-				-webkit-animation: fadeout 5s;
-				animation: fadeout 5s;
+				-webkit-animation: fadeout 10s;
+				animation: fadeout 10s;
 			}
 		}
 	}
@@ -1075,10 +1075,30 @@ body.menu_opened {
 		.prayer_wrap {
 			&.animate {
 				opacity: 0;
-				-webkit-animation: fadeout 3s;
-				animation: fadeout 3s;
+				-webkit-animation: fadeout 5s;
+				animation: fadeout 5s;
 			}
 		}
+	}
+}
+
+#allquotesdiv, #allprayersdiv {
+	> div {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.39);
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+	}
+	blockquote {
+		padding: 0;
+		margin-bottom: 5px;
+	}
+	button {
+		background-color: #B83B44;
+		font-size: 13px;
+		padding: 3px 10px;
+		border-radius: 2px;
+		margin: 5px 0 10px 0;
+		cursor: pointer;
 	}
 }
 
