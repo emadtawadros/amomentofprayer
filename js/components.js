@@ -276,6 +276,7 @@ Hull.component('unapprovedprayers', {
   datasources: {
     unapprovedprayerslist: function() {
       return this.api('550467c3528154b44e0011c0/conversations', 'get', {
+        'limit': 500,
         where: {
           'extra.approved': false
         }
