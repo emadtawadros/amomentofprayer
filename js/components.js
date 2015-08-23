@@ -68,17 +68,7 @@ Hull.component('quotes', {
           $('#quotes').find('.slick-slide blockquote').addClass('animate').removeClass('paused');;
         }
     });
-    $(document).on('click','#pause_session',function(event) {
-        event.preventDefault();
-        $(this).toggleClass('paused');
-        if($(this).hasClass('paused')) {
-          $('#prayershub').slick('slickPause');
-          $('#prayershub').find('.slick-slide .prayer_wrap').removeClass('animate').addClass('paused');
-        } else {
-          $('#prayershub').slick('slickPlay')
-          $('#prayershub').find('.slick-slide .prayer_wrap').addClass('animate').removeClass('paused');;
-        }
-    });
+   
   }
 });
 
@@ -544,6 +534,18 @@ Hull.component('prayershub', {
       infinite: true,
       pauseOnHover: false,
       speed: 0
+    });
+
+     $(document).on('click','#pause_session',function(event) {
+        event.preventDefault();
+        $(this).toggleClass('paused');
+        if($(this).hasClass('paused')) {
+          $('#prayershub').slick('slickPause');
+          $('#prayershub').find('.slick-slide .prayer_wrap').removeClass('animate').addClass('paused');
+        } else {
+          $('#prayershub').slick('slickPlay')
+          $('#prayershub').find('.slick-slide .prayer_wrap').addClass('animate').removeClass('paused');;
+        }
     });
 
     $(window).blur(function() {
