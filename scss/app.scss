@@ -506,6 +506,16 @@ body {
 	-webkit-transition: transform 0.35s;
 	overflow: auto;
 	z-index: 1000;
+	.pp {
+		position: absolute;
+		bottom: 0;
+		left: 10px;
+		@media #{$small-only} {
+			position: static;
+			margin-left: 29px;
+			margin-bottom: 10px;
+		}
+	}
 	.fb-like {
 		position: static !important;
 		/* width: 127px; */
