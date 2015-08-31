@@ -11,10 +11,14 @@ Hull.component('quotes', {
   },
   afterRender: function(data) {
 
+
     $('#quotes').on('init', function(event){
          $('#quotes').find('.slick-slide blockquote').addClass('animate');
      
     });
+
+    $('#main_content').css('opacity','1');
+    $('#loader').hide();
 
     $('#quotes').slick({
       fade: true,
@@ -27,11 +31,15 @@ Hull.component('quotes', {
     });
 
     $(window).blur(function() {
-        $('#quotes').find('.slick-slide blockquote').removeClass('animate');
+        if($('#quotes').css('display') != 'none') {
+          $('#quotes').find('.slick-slide blockquote').removeClass('animate');
+        }
     });
 
     $(window).focus(function() {
+      if($('#quotes').css('display') != 'none') {
         $('#quotes').find('.slick-slide blockquote').addClass('animate');
+      }
     });
 
   
@@ -549,11 +557,32 @@ Hull.component('prayershub', {
     });
 
     $(window).blur(function() {
-        $('#prayershub, #prayerintro, #prayeroutro').find('.slick-slide .prayer_wrap').removeClass('animate');
+        if($('#prayershub').css('display') != 'none') {
+          $('#prayershub').find('.slick-slide .prayer_wrap').removeClass('animate');
+        }
+        if($('#prayerintro').css('display') != 'none') {
+          $('#prayerintro').find('.slick-slide .prayer_wrap').removeClass('animate');
+        }
+        if($('#prayeroutro').css('display') != 'none') {
+          $('#prayeroutro').find('.slick-slide .prayer_wrap').removeClass('animate');
+        }
+        // $('#prayershub, #prayerintro, #prayeroutro').find('.slick-slide .prayer_wrap').removeClass('animate');
     });
 
     $(window).focus(function() {
-        $('#prayershub, #prayerintro, #prayeroutro').find('.slick-slide .prayer_wrap').addClass('animate');
+        if($('#prayershub').css('display') != 'none') {
+          $('#prayershub').find('.slick-slide .prayer_wrap').addClass('animate');
+        }
+        if($('#prayerintro').css('display') != 'none') {
+          $('#prayerintro').find('.slick-slide .prayer_wrap').addClass('animate');
+        }
+        if($('#prayeroutro').css('display') != 'none') {
+          $('#prayeroutro').find('.slick-slide .prayer_wrap').addClass('animate');
+        } else
+         {
+        $('#prayeroutro').slick('slickPause');
+         }        
+        // $('#prayershub, #prayerintro, #prayeroutro').find('.slick-slide .prayer_wrap').addClass('animate');
     });
 
     $('#prayershub').slick('slickGoTo',1);

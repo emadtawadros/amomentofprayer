@@ -56,6 +56,17 @@
     src: url(../font/AftaSerifThin-Italic.otf);
 }
 
+#loader {
+	background-image: url(../img/loader.gif);
+	height: 100%;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
 #content_wrap {
 	overflow: hidden;
 	height: 100%;
