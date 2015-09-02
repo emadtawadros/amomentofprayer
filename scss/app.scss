@@ -57,7 +57,7 @@
 }
 
 #loader {
-	background-image: url(../img/loader.gif);
+	background-image: url(../img/712.GIF);
 	height: 100%;
 	width: 100%;
 	background-repeat: no-repeat;
@@ -180,7 +180,7 @@
 }
 
 body {
-	background: #2d3742;
+	background: #1C2229;
 }
 
 #main_content {
@@ -752,6 +752,14 @@ body.menu_opened {
 				display: inline-block;
 				font-size: 22px;
 				transition: 0.35s;
+				&.disabled {
+					opacity: 0.4;
+					pointer-events: none;
+					&:after {
+						content: url(../img/small_loader.GIF);
+						margin-left: 10px;
+					}
+				}
 				img {
 					margin-right: 5px;
 					vertical-align: text-bottom;

@@ -207,9 +207,13 @@ Hull.init({
           }
         });
 
+       
 
         $(document).on('click','#submit_button',function(event) {
           event.preventDefault();
+          if($(this).hasClass('disabled')) {
+            return false;
+          }
           $('#pause_quotes').trigger('click');
           $('.home_buttons, #quotes').fadeOut(400, function() {
             $('#submitPrayerForm').fadeIn(400);
@@ -218,6 +222,9 @@ Hull.init({
 
         $(document).on('click','#start_button',function(event) {
           event.preventDefault();
+          if($(this).hasClass('disabled')) {
+            return false;
+          }
           // $('#quotes').slick('slickPause');
           $('#pause_quotes').trigger('click');
           $('#prayeroutro').hide();

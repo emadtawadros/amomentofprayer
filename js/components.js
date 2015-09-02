@@ -227,6 +227,7 @@ Hull.component('submitprayerform', {
     }
   },
   afterRender: function(data) {
+     $('#submit_button').removeClass('disabled');
     $('#submitPrayerForm .input_wrap .info a').magnificPopup({
           type:'inline',
           removalDelay: 500, //delay removal by X to allow out-animation
@@ -514,6 +515,7 @@ Hull.component('prayershub', {
    }
   },
   afterRender: function(data) {
+    $('#start_button').removeClass('disabled');
     $('#prayershub').slick({
       fade: true,
       arrows: false,
