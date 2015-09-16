@@ -11,6 +11,120 @@ Hull.component('quotes', {
   },
   afterRender: function(data) {
 
+    
+
+    
+
+    // $(document).on('click', '.toggle_signup_form', function(event) {
+    //   event.preventDefault();
+    //   $('#signup_form').slideToggle(300);
+    // });
+
+    var signup_popup = $('.toggle_signup_form a, .back_popup').magnificPopup({ 
+
+    });
+
+    var login_popup = $('.login_button a').magnificPopup({ 
+        removalDelay: 500, //delay removal by X to allow out-animation
+        callbacks: {
+          beforeOpen: function() {
+             this.st.mainClass = this.st.el.attr('data-effect');
+          },
+        },
+        midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+    });
+
+
+    $(document).on('click', '#facebook_login button', function(event) {
+      event.preventDefault();
+      Hull.login({
+        provider:'facebook',
+        strategy:'redirect',
+      });
+    });
+
+
+    $(document).on('click', '#login_form button', function(event) {
+      event.preventDefault();
+      var e = $('#login_form #login_form_email').val();
+      var p = $('#login_form #login_form_password').val();
+
+      var button = $(this);
+      button.addClass('loading');
+
+      Hull.login({'login': e, 'password': p}).then(function(user) {
+        button.removeClass('loading');
+        location.reload();
+      }, function(error) {
+        $('#login_form .error').html(error.message).show();
+        button.removeClass('loading');
+      });
+    });
+
+
+    $(document).on('click', '#reset_form button', function(event) {
+      event.preventDefault();
+      var e = $('#reset_form #reset_form_email').val();
+      var button = $(this);
+      button.addClass('loading');
+      if(e.length) {
+
+        Hull.api('/users/request_password_reset', 'post',{
+          "email": e
+        }).then(function(response) {
+          if(response == true) {
+            $('#reset_form .error').hide();
+            $('#reset_form .done').html('An Email with a reset link will be sent to you in few minutes.').show();
+            button.removeClass('loading');
+          } 
+        }, function(error) {
+          $('#reset_form .error').html(error.message).show();
+          button.removeClass('loading');
+        });
+
+      } else {
+
+        $('#reset_form .error').html('Please Fill in all Fields.').show();
+        button.removeClass('loading');
+
+      }
+          
+
+    });
+
+    $(document).on('click', '#signup_form button', function(event) {
+      event.preventDefault();
+      var n = $('#signup_form #signup_form_name').val();
+      var e = $('#signup_form #signup_form_email').val();
+      var p = $('#signup_form #signup_form_password').val();
+
+       var button = $(this);
+      button.addClass('loading');
+
+      if(n.length & e.length & p.length) {
+        console.log(n,e,p);
+        var user = {
+          name: n,
+          email: e,
+          password: p,
+        }
+
+        Hull.signup(user).then(function(user) {
+          button.removeClass('loading');
+          location.reload();
+        }, function(error) {
+          $('#signup_form .error').html(error.message).show();
+          button.removeClass('loading');
+        });
+
+      } else {
+        $('#signup_form .error').html('Please Fill in all Fields.').show();
+        button.removeClass('loading');
+      }
+          
+
+    });
+
 
     $('#quotes').on('init', function(event){
          $('#quotes').find('.slick-slide blockquote').addClass('animate');
@@ -355,6 +469,15 @@ Hull.component('profile', {
   templates: ['profile'],
   refreshEvents: ['model.hull.me.change'],
   afterRender: function(data) {
+
+    $(document).on('click', '#profile_icon .profile_menu ul li a.logout', function(event) {
+      event.preventDefault();
+      Hull.logout().then(function() {
+        location.reload();
+      }).catch(function(err){
+        console.log('Something happened', err);
+      });
+    });
     if(Hull.currentUser()) {
     var n = [];
 
@@ -502,7 +625,16 @@ Hull.component('prayershub', {
   refreshEvents: ['model.hull.me.change'],
   datasources: {
    prayers: function() {
-     return this.api('550467c3528154b44e0011c0/conversations', 'get', {
+    if(!Hull.currentUser()) {
+      return this.api('550467c3528154b44e0011c0/conversations', 'get', {
+       'limit': 500,
+       'order_by': 'extra.lastKnownPrayersNumber ASC',
+        where: {
+          'extra.approved': true,
+        }
+     });
+    } else {
+      return this.api('550467c3528154b44e0011c0/conversations', 'get', {
        'limit': 500,
        'order_by': 'extra.lastKnownPrayersNumber ASC',
         where: {
@@ -512,10 +644,13 @@ Hull.component('prayershub', {
            }
         }
      });
+     
    }
+    }
   },
   afterRender: function(data) {
     $('#start_button').removeClass('disabled');
+    $('#start_button2').removeClass('disabled');
     $('#prayershub').slick({
       fade: true,
       arrows: false,
@@ -630,11 +765,14 @@ Hull.component('prayershub', {
 
     $('#prayershub').on('beforeChange', function(event, slick, currentSlide, nextSlide){
 
-      var id = $('#prayershub .slick-track > div').eq(currentSlide).data('id');
+      if(Hull.currentUser()) {
 
-      Hull.api(id+'/messages', 'post',{
-        "body": "Prayed"
-      });
+        var id = $('#prayershub .slick-track > div').eq(currentSlide).data('id');
+
+        Hull.api(id+'/messages', 'post',{
+          "body": "Prayed"
+        });
+      }
 
     });
   }

@@ -183,6 +183,139 @@ body {
 	background: #1C2229;
 }
 
+.login_popup {
+	max-width: 500px !important;
+	.btn-facebook {
+		background: #3b579d;
+		padding: 4px 17px 4px 7px;
+		display: inline-block;
+		color: #fff;
+		text-transform: uppercase;
+		font-family: libelsuit;
+		font-size: 20px;
+		border-bottom: 2px solid #303e5f;
+		border-radius: 3px;
+		text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.38);
+		i {
+			font-size: 24px;
+		}
+	}
+	#signup_form {
+		display: none;
+	}
+	.toggle_signup_form {
+		cursor: pointer;
+	    margin-bottom: 15px;
+   	 	font-size: 18px;
+		a {
+			color: inherit;
+		}
+	}
+	#login_form {
+		overflow: hidden;
+		button {
+			float: right;
+		}
+		.error {
+			background-color: #D85050;
+			color: #fff;
+			padding: 5px 10px;
+			margin-bottom: 15px;
+		}
+	}
+	#facebook_login {
+		border-bottom: 1px solid #ccc;
+		border-top: 1px solid #ccc;
+		padding-top: 20px;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+}
+
+.signup_button {
+	background: #995615;
+	border-bottom: 3px solid #57310c;
+	border-radius: 4px;
+	color: #d8b974;
+	text-transform: uppercase;
+	font-family: libelsuit,Helvetica,Roboto,Arial,sans-serif;
+	padding: 4px 17px 4px 17px;
+	display: inline-block;
+	font-size: 20px;
+	transition: 0.35s;
+    width: 100%;
+    text-align: center;
+	&:hover {
+		color: #fff;
+	}
+}
+
+#login_form, #signup_form, #reset_form {
+	.error {
+		background-color: #D85050;
+		color: #fff;
+		padding: 5px 10px;
+		margin-bottom: 15px;
+	}
+	.done {
+		background-color: #61B373;
+		color: #fff;
+		padding: 5px 10px;
+		margin-bottom: 15px;
+	}
+	textarea, input {
+		background-color: #9B9275;
+		border: none;
+		border-radius: 3px;
+		color: #fff;
+	}
+	button.submit {
+		background: #995615;
+		border-bottom: 3px solid #57310c;
+		border-radius: 4px;
+		color: #d8b974;
+		text-transform: uppercase;
+		font-family: libelsuit,Helvetica,Roboto,Arial,sans-serif;
+		padding: 4px 17px 4px 17px;
+		display: inline-block;
+		font-size: 20px;
+		transition: 0.35s;
+		&.loading {
+			&:after {
+				content: '';
+				background-image: url(../img/small_loader.GIF);
+				margin-left: 10px;
+				width: 17px;
+				height: 17px;
+				display: inline-block;
+				background-size: 17px;
+				vertical-align: baseline;
+			}
+		}
+	}
+	.forgot_pass {
+		font-size: 16px;
+		color: #495761;
+	}
+	.back_popup {
+		color: inherit;
+		margin-left: 10px;
+	}
+}
+
+#signup_form {
+	.back_popup {
+		color: inherit;
+		margin-left: 10px;
+	}
+	.error {
+		background-color: #D85050;
+		color: #fff;
+		padding: 5px 10px;
+		margin-bottom: 15px;
+	}
+}
+
 #main_content {
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2d3742+0,111820+100 */
 	background: #2d3742; /* Old browsers */
@@ -326,9 +459,27 @@ body {
 			}
 		}
 	}
+		// .login_button {
+		// 	background: #995615;
+		// 	border-bottom: 3px solid #57310c;
+		// 	border-radius: 4px;
+		// 	color: #d8b974;
+		// 	text-transform: uppercase;
+		// 	font-family: $header-font-family;
+		// 	padding: 4px 17px 4px 17px;
+		// 	display: inline-block;
+		// 	font-size: 20px;
+		// 	transition: 0.35s;
+		// 	a {
+		// 		color: inherit;
+		// 	}
+		// }
+		// .or {
+		// 	color: #fff;
+		// }
 	#facebook_login {
 		text-align: center;
-		padding: 15px;
+		padding: 0 15px 15px;
 		a, button {
 			background: #3b579d;
 			padding: 4px 17px 4px 7px;

@@ -214,7 +214,7 @@
             <li><a class="admin_button" href="#allquotes" data-effect="mfp-zoom-in">Quotes</a></li>
             <li><a class="admin_button" href="#allprayers" data-effect="mfp-zoom-in">Prayers</a></li>
             {{/if}}
-            <li><a  data-hull-action="logout">Logout</a></li>
+            <li><a  class="logout">Logout</a></li>
             </ul>
             </div>
             </div>
@@ -237,9 +237,64 @@
           </ul>
         </div>
         {{else}}
-          <div id="facebook_login">
-          <div data-hull-component="login/profile@hull" data-hull-provider="facebook"></div>
+
+          <div id="email_login_pop" class="white-popup mfp-with-anim login_popup mfp-hide">
+            <div id="login_form">
+              <h3>Login</h3>
+              <div style="display:none;" class="error"></div>
+              <label>Email</label>
+              <input type="email" id="login_form_email">
+              <label>Password</label>
+              <input type="password" id="login_form_password">
+              <button class="submit">Login</button>
+              <a href="#reset_form" class="back_popup forgot_pass">Forgot Password</a>
+            </div>
+
+
+            <div id="facebook_login">
+              <button class="btn btn-small btn-facebook">
+                <i class="icon-facebook"></i>
+                Sign In with Facebook
+              </button>
+            </div>
+
+            <div id="reset_form" class="white-popup mfp-with-anim login_popup mfp-hide">
+              <h3>Reset Password</h3>
+              <div style="display:none;" class="error"></div>
+              <div style="display:none;" class="done"></div>
+              <label>Email</label>
+              <input type="email" id="reset_form_email">
+              <button class="submit">Submit</button>
+              <a href="#email_login_pop" class="back_popup">Go Back</a>
+            </div>
+
+              <p class="toggle_signup_form"><a href="#signup_form">Don't have an accout? Sign up now to submit your own prayer requests, It's completely anonymous</a></p>
+              <a href="#signup_form" class="signup_button back_popup">Sign Up Now</a>
+             <div id="signup_form" class="white-popup mfp-with-anim login_popup mfp-hide">
+              <h3>Sign Up</h3>
+              <div style="display:none;" class="error"></div>
+              <label>Username</label>
+              <input type="text" id="signup_form_name">
+              <label>Email</label>
+              <input type="email" id="signup_form_email">
+              <label>Password</label>
+              <input type="password" id="signup_form_password">
+              <button class="submit">Sign up</button>
+              <a href="#email_login_pop" class="back_popup">Go Back</a>
+            </div>
+
           </div>
+
+          <div class="home_buttons">
+            <ul>
+              <li class="login_button"><a ata-effect="mfp-zoom-in" href="#email_login_pop">Login/Sign Up</a></li>
+              <li><a href="#" id="start_button2" class="disabled"><img src="img/session.png" alt="session"> Start Prayer Session</a></li>
+            </ul>
+          </div>
+
+      
+        
+
       {{/if}}
     </script>
 
@@ -419,7 +474,10 @@
     <!-- <script src="js/ttw-notification-menu.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.2/backbone-min.js"></script>
-    <script src="//d3f5pyioow99x0.cloudfront.net/0.8/hull.js"></script>
+
+    <script src="//d3f5pyioow99x0.cloudfront.net/0.8.48/hull.js"></script> 
+    <!--  <script src="js/hhh.js"></script>-->
+
     <script src="js/components.js"></script>
     <script src="js/soundmanager2.js"></script>
     <script src="js/jquery.sharrre.min.js"></script>

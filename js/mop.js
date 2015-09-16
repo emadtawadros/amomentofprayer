@@ -220,7 +220,7 @@ Hull.init({
           });
         });
 
-        $(document).on('click','#start_button',function(event) {
+        $(document).on('click','#start_button, #start_button2',function(event) {
           event.preventDefault();
           if($(this).hasClass('disabled')) {
             return false;
